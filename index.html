@@ -1,234 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agencia Tenerife JMM</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #001b44, #003b88, #005eff);
-      color: white;
-      min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      padding: 25px 15px;
-      background: rgba(0, 0, 0, 0.35);
-      border-bottom: 2px solid #ffd700;
-    }
-
-    header h1 {
-      font-size: 28px;
-      color: #ffd700;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      font-size: 15px;
-      opacity: 0.95;
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 15px;
-    }
-
-    nav button {
-      padding: 14px;
-      border: none;
-      border-radius: 14px;
-      background: #ffd700;
-      color: #001b44;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    section {
-      display: none;
-      padding: 18px;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .card h2, .card h3 {
-      color: #ffd700;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 11px 14px;
-      background: #ffd700;
-      color: #001b44;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .profile img {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #ffd700;
-      background: white;
-    }
-
-    .small {
-      font-size: 13px;
-      opacity: 0.9;
-      margin-top: 5px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      opacity: 0.85;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agencia Tenerife JMM</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:linear-gradient(160deg,#00142f,#003b88,#0072ff);color:white;min-height:100vh}
+header{text-align:center;padding:28px 18px;background:rgba(0,0,0,.35);border-bottom:3px solid #ffd700}
+.logo{width:95px;height:95px;border-radius:50%;border:4px solid #ffd700;background:white;color:#003b88;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:bold}
+h1{color:#ffd700;font-size:30px}
+nav{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px;background:rgba(0,14,40,.95)}
+nav button{padding:12px 6px;border:0;border-radius:14px;background:#ffd700;color:#00142f;font-weight:bold;font-size:13px}
+section{display:none;padding:18px}
+section.active{display:block}
+.card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:18px;margin-bottom:16px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+h2,h3{color:#ffd700;margin-bottom:10px}
+p{line-height:1.45;font-size:15px}
+.tag{display:inline-block;background:rgba(255,215,0,.18);border:1px solid #ffd700;color:#ffd700;border-radius:999px;padding:6px 10px;font-size:12px;margin:4px;font-weight:bold}
+.profile{display:flex;gap:14px;align-items:center;margin-top:14px}
+.photo{min-width:76px;width:76px;height:76px;border-radius:50%;border:3px solid #ffd700;background:white;color:#003b88;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:22px}
+.small{font-size:13px;opacity:.88;margin-top:3px}
+.statbox{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{background:rgba(0,0,0,.22);border-radius:18px;padding:15px;text-align:center}
+.stat b{display:block;color:#ffd700;font-size:24px;margin-bottom:4px}
+input{width:100%;padding:13px;border-radius:14px;border:0;margin:12px 0;font-size:15px}
+.btn{display:inline-block;margin-top:10px;padding:12px 14px;background:#ffd700;color:#00142f;border-radius:14px;text-decoration:none;font-weight:bold}
+.status{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:bold;background:#1ee68c;color:#002b18}
+.list{padding-left:20px;margin-top:10px}
+.list li{margin-bottom:8px}
+footer{text-align:center;padding:20px;font-size:13px;opacity:.8}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Agencia Tenerife JMM</h1>
-    <p>Gestión, formación y apoyo para emisoras Poppo Live</p>
-  </header>
+<header>
+<div class="logo">JM</div>
+<h1>Agencia Tenerife JMM</h1>
+<p>Gestión, formación y apoyo para emisoras Poppo Live</p>
+</header>
 
-  <nav>
-    <button onclick="mostrar('inicio')">Inicio</button>
-    <button onclick="mostrar('emisoras')">Emisoras</button>
-    <button onclick="mostrar('academia')">Academia</button>
-    <button onclick="mostrar('pagos')">Pagos</button>
-  </nav>
+<nav>
+<button onclick="mostrar('inicio')">Inicio</button>
+<button onclick="mostrar('emisoras')">Emisoras</button>
+<button onclick="mostrar('academia')">Academia</button>
+<button onclick="mostrar('pagos')">Pagos</button>
+</nav>
 
-  <section id="inicio" class="active">
-    <div class="card">
-      <h2>Bienvenida</h2>
-      <p>
-        Bienvenida a la aplicación oficial de Agencia Tenerife JMM.
-        Aquí encontrarás información de la agencia, administración,
-        academia, pagos y herramientas para mejorar como emisora.
-      </p>
-    </div>
+<section id="inicio" class="active">
+<div class="card">
+<h2>Panel principal</h2>
+<p>Bienvenida a la aplicación oficial de Agencia Tenerife JMM. Aquí tendrás información de administración, emisoras, academia, pagos y avisos importantes.</p>
+<span class="tag">Poppo Live</span><span class="tag">Academia</span><span class="tag">Gestión</span>
+</div>
 
-    <div class="card">
-      <h3>Administración principal</h3>
+<div class="card">
+<h3>Resumen rápido</h3>
+<div class="statbox">
+<div class="stat"><b>3</b>Administración</div>
+<div class="stat"><b>V2</b>Versión web</div>
+<div class="stat"><b>24h</b>Apoyo</div>
+<div class="stat"><b>100%</b>Formación</div>
+</div>
+</div>
 
-      <div class="profile">
-        <img src="https://via.placeholder.com/150" alt="Jesús">
-        <div>
-          <strong>Jesús Melián</strong>
-          <p>Agente principal</p>
-          <p class="small">España · Tenerife</p>
-        </div>
-      </div>
+<div class="card">
+<h3>Administración principal</h3>
+<div class="profile"><div class="photo">J</div><div><strong>Jesús Melián</strong><p>Agente principal</p><p class="small">España · Tenerife</p></div></div>
+<div class="profile"><div class="photo">R</div><div><strong>Ruth María</strong><p>Administración</p><p class="small">Cuba · Cienfuegos</p></div></div>
+<div class="profile"><div class="photo">Y</div><div><strong>Yandira Vives</strong><p>Administración</p><p class="small">Cuba · La Habana</p></div></div>
+</div>
 
-      <br>
+<div class="card">
+<h3>Aviso de administración</h3>
+<p>Esta aplicación está en construcción. Los teléfonos, enlaces, fotos reales y datos completos se irán añadiendo poco a poco.</p>
+</div>
+</section>
 
-      <div class="profile">
-        <img src="https://via.placeholder.com/150" alt="Ruth María">
-        <div>
-          <strong>Ruth María</strong>
-          <p>Administración</p>
-          <p class="small">Cuba · Cienfuegos</p>
-        </div>
-      </div>
+<section id="emisoras">
+<div class="card">
+<h2>Emisoras</h2>
+<p>Busca y revisa las emisoras registradas en la agencia.</p>
+<input type="text" id="buscador" placeholder="Buscar emisora..." onkeyup="buscarEmisora()">
+</div>
 
-      <br>
+<div class="card emisora">
+<h3>Ruth María</h3>
+<p><b>País:</b> Cuba</p>
+<p><b>Rol:</b> Administración</p>
+<p><b>Nivel:</b> Pendiente</p>
+<span class="status">Activa</span>
+</div>
 
-      <div class="profile">
-        <img src="https://via.placeholder.com/150" alt="Yandira Vives">
-        <div>
-          <strong>Yandira Vives</strong>
-          <p>Administración</p>
-          <p class="small">Cuba · La Habana</p>
-        </div>
-      </div>
-    </div>
-  </section><section id="emisoras">
+<div class="card emisora">
+<h3>Yandira Vives</h3>
+<p><b>País:</b> Cuba</p>
+<p><b>Rol:</b> Administración</p>
+<p><b>Nivel:</b> Pendiente</p>
+<span class="status">Activa</span>
+</div>
 
-  <div class="card">
-    <h2>Emisoras</h2>
-    <p>Listado de emisoras registradas en la Agencia Tenerife JMM.</p>
-  </div>
-
-  <div class="card">
-    <h3>Próximamente</h3>
-    <p>Aquí aparecerán todas las emisoras con su foto, ID, país, nivel y estado.</p>
-  </div>
-
+<div class="card emisora">
+<h3>Emisora nueva</h3>
+<p><b>ID:</b> Pendiente</p>
+<p><b>País:</b> Pendiente</p>
+<p><b>Nivel:</b> Pendiente</p>
+<span class="status">Por completar</span>
+</div>
 </section>
 
 <section id="academia">
+<div class="card">
+<h2>Academia JMM</h2>
+<p>Formación básica para nuevas emisoras. Aquí aprenderán cómo empezar, cómo cuidar la sala y cómo mejorar sus resultados.</p>
+</div>
 
-  <div class="card">
-    <h2>Academia</h2>
-    <p>Bienvenida a la Academia de Agencia Tenerife JMM.</p>
-    <a class="btn" href="#">Entrar a la Academia</a>
-  </div>
+<div class="card">
+<h3>Curso 1: Primeros pasos</h3>
+<ul class="list">
+<li>Crear y revisar perfil.</li>
+<li>Preparar foto, nombre y presentación.</li>
+<li>Entrar a transmisión correctamente.</li>
+</ul>
+</div>
 
+<div class="card">
+<h3>Curso 2: Cómo hacer buen live</h3>
+<ul class="list">
+<li>Saludar y recibir bien a los usuarios.</li>
+<li>Mantener conversación activa.</li>
+<li>Evitar discusiones y mala actitud en sala.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Curso 3: Reglas importantes</h3>
+<ul class="list">
+<li>Respetar normas de Poppo Live.</li>
+<li>No compartir datos peligrosos.</li>
+<li>Consultar siempre con administración ante dudas.</li>
+</ul>
+</div>
 </section>
 
 <section id="pagos">
+<div class="card">
+<h2>Pagos y bonos</h2>
+<p>Información general sobre pagos, bonos y recompensas. Los datos exactos se actualizarán según la tabla oficial de la agencia.</p>
+</div>
 
-  <div class="card">
-    <h2>Pagos</h2>
-    <p>Consulta aquí la información sobre pagos, bonos y recompensas de la agencia.</p>
-    <a class="btn" href="#">Ver información de pagos</a>
-  </div>
+<div class="card">
+<h3>Información importante</h3>
+<ul class="list">
+<li>Los pagos dependen del rendimiento y normas de la plataforma.</li>
+<li>Los bonos se revisan con administración.</li>
+<li>Los datos de retiro deben estar correctos antes de solicitar pago.</li>
+</ul>
+</div>
 
-</section><footer>
-  © 2026 Agencia Tenerife JMM - Todos los derechos reservados.
+<div class="card">
+<h3>Contacto de pagos</h3>
+<p>Próximamente se añadirá botón directo de WhatsApp para pagos y soporte.</p>
+<a class="btn" href="#">WhatsApp pagos</a>
+</div>
+</section>
+
+<footer>
+© 2026 Agencia Tenerife JMM · Aplicación interna
 </footer>
 
 <script>
 function mostrar(id){
+document.querySelectorAll("section").forEach(sec=>sec.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo(0,0);
+}
 
-  let secciones = document.querySelectorAll("section");
-
-  secciones.forEach(function(sec){
-      sec.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
+function buscarEmisora(){
+let texto=document.getElementById("buscador").value.toLowerCase();
+let emisoras=document.querySelectorAll(".emisora");
+emisoras.forEach(function(card){
+let contenido=card.innerText.toLowerCase();
+card.style.display=contenido.includes(texto)?"block":"none";
+});
 }
 </script>
 
