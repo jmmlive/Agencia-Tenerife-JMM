@@ -4,15 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agencia JM</title>
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #020817;
       color: white;
@@ -20,24 +14,38 @@
 
     .app {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top, rgba(0, 120, 255, 0.35), transparent 35%),
-        linear-gradient(135deg, #020817, #061b3a);
       padding: 18px;
+      background:
+        radial-gradient(circle at top, rgba(0,130,255,.35), transparent 35%),
+        linear-gradient(135deg, #020817, #061b3a);
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .title h1 {
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    .title span {
+      color: #00aaff;
     }
 
     .hero {
-      min-height: 420px;
+      min-height: 330px;
       border-radius: 22px;
       background:
-        linear-gradient(to bottom, rgba(2,8,23,0.05), rgba(2,8,23,0.92)),
+        linear-gradient(to bottom, rgba(2,8,23,.05), rgba(2,8,23,.95)),
         url("portada-agencia-jm.png");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center top;
-      border: 1px solid rgba(0, 170, 255, 0.35);
-      box-shadow: 0 0 35px rgba(0, 110, 255, 0.25);
-      margin-bottom: 22px;
+      border: 1px solid rgba(0,170,255,.35);
+      box-shadow: 0 0 35px rgba(0,120,255,.25);
+      margin-bottom: 20px;
     }
 
     .cards {
@@ -47,52 +55,61 @@
     }
 
     .card {
-      background: rgba(0, 26, 61, 0.82);
-      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: rgba(0, 26, 61, .85);
+      border: 1px solid rgba(0,170,255,.28);
       border-radius: 16px;
       padding: 18px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.25);
+      box-shadow: 0 0 18px rgba(0,0,0,.25);
     }
 
     .card h2 {
-      font-size: 34px;
-      margin-bottom: 5px;
+      font-size: 36px;
+      margin: 0;
     }
 
     .card p {
       color: #d9e5f5;
+      margin: 6px 0;
     }
 
     .green {
       color: #55ff85;
-      font-size: 14px;
     }
 
-    .title {
-      text-align: center;
-      margin-bottom: 18px;
+    .panel {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .title h1 {
-      font-size: 30px;
-      letter-spacing: 2px;
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
 
-    .title span {
-      color: #00aaff;
+    button {
+      background: #041d46;
+      color: white;
+      border: 1px solid rgba(0,170,255,.35);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 15px;
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 280px;
-      }
+    .notice {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
 
-      .cards {
+    @media(max-width: 650px) {
+      .cards, .panel {
         grid-template-columns: 1fr;
       }
 
-      .title h1 {
-        font-size: 24px;
+      .hero {
+        min-height: 260px;
       }
     }
   </style>
@@ -130,7 +147,26 @@
       <div class="card">
         <h2>125</h2>
         <p>Academia</p>
-        <small class="green">Formación de emisoras</small>
+        <small class="green">Formación activa</small>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="card">
+        <h3>🔥 Avisos Recientes</h3>
+        <div class="notice">Evento de Reclutamiento Activo</div>
+        <div class="notice">Nueva clase disponible en Academia</div>
+        <div class="notice">Reunión general domingo 18:00 Cuba</div>
+      </div>
+
+      <div class="card">
+        <h3>⚡ Accesos Rápidos</h3>
+        <div class="button-grid">
+          <button>Nueva Emisora</button>
+          <button>Academia</button>
+          <button>Tareas</button>
+          <button>Pagos</button>
+        </div>
       </div>
     </section>
 
