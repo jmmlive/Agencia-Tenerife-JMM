@@ -1,87 +1,92 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Agencia JM</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#020817;color:white}
-.app{min-height:100vh;background:radial-gradient(circle at top,#075fc766,transparent 35%),linear-gradient(135deg,#020817,#061b3a);padding:16px}
-.header{text-align:center;padding:18px 0}
-.logo{width:90px;height:90px;margin:auto;border-radius:50%;display:grid;place-items:center;font-size:45px;background:#031b3f;border:1px solid #159cff;box-shadow:0 0 25px #007bff}
+.app{min-height:100vh;padding:18px;background:radial-gradient(circle at top,#008cff55,transparent 35%),linear-gradient(135deg,#020817,#061b3a)}
+.header{text-align:center;margin-bottom:22px}
+.logo{width:95px;height:95px;margin:auto;border-radius:50%;display:grid;place-items:center;font-size:48px;background:#031b3f;border:1px solid #159cff;box-shadow:0 0 30px #008cff}
 h1{font-size:34px;letter-spacing:3px;margin-top:12px}
 h1 span{color:#00aaff}
-.hero{margin:18px auto;max-width:950px;border-radius:24px;padding:35px 20px;text-align:center;background:linear-gradient(145deg,#062d68,#020817);border:1px solid #0b8cff;box-shadow:0 0 35px #005eff66}
-.hero h2{font-size:32px;margin-bottom:10px}
-.hero p{color:#cde7ff;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1100px;margin:20px auto}
-.card{background:#031b3fcc;border:1px solid #0b8cff66;border-radius:18px;padding:20px;box-shadow:0 0 18px #0008}
-.card h3{font-size:15px;color:#cde7ff;margin-bottom:8px}
-.card h2{font-size:40px}
+p,small{color:#cde7ff}
+.menu{display:flex;gap:10px;overflow:auto;margin-bottom:18px}
+.menu a{color:white;text-decoration:none;background:#041d46;border:1px solid #0b8cff77;border-radius:14px;padding:13px 16px;white-space:nowrap}
+.menu a:hover{background:#075fc7}
+.hero,.card{background:#031b3fcc;border:1px solid #0b8cff66;border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:0 0 22px #0008}
+.hero{text-align:center;background:linear-gradient(145deg,#062d68,#020817)}
+.hero h2{font-size:30px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card h2{font-size:42px}
+.card h3{color:#d8ecff;margin-bottom:8px}
 .green{color:#55ff85}
-.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1100px;margin:auto}
+.blue{color:#00aaff}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .notice{padding:12px 0;border-bottom:1px solid #ffffff22}
 .quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-button{padding:16px;border-radius:14px;border:1px solid #0b8cff66;background:#041d46;color:white;font-size:15px}
-.menu{display:flex;gap:8px;overflow:auto;max-width:1100px;margin:auto;padding-bottom:8px}
-.menu a{white-space:nowrap;text-decoration:none;color:white;background:#041d46;border:1px solid #0b8cff66;border-radius:14px;padding:12px 15px}
-.menu a:first-child{background:#075fc7}
-@media(max-width:800px){.grid,.panel{grid-template-columns:1fr}.hero h2{font-size:25px}h1{font-size:28px}}
+.quick a{color:white;text-align:center;text-decoration:none;border:1px solid #0b8cff66;border-radius:14px;padding:16px;background:#041d46}
+.page{display:none}
+.page:target{display:block}
+#dashboard{display:block}
+.page:target~#dashboard{display:none}
+@media(max-width:800px){.grid,.panel{grid-template-columns:1fr}h1{font-size:29px}.hero h2{font-size:24px}}
 </style>
 </head>
 <body>
-<div class="app">
-
-<header class="header">
-  <div class="logo">🦅</div>
-  <h1>AGENCIA <span>JM</span></h1>
-  <p>Panel principal de administración</p>
-</header>
-
-<nav class="menu">
-  <a href="#">🏠 Dashboard</a>
-  <a href="#">👥 Emisoras</a>
-  <a href="#">🎓 Academia</a>
-  <a href="#">📋 Tareas</a>
-  <a href="#">🔔 Avisos</a>
-  <a href="#">💰 Pagos</a>
-  <a href="#">📊 Reportes</a>
-</nav>
-
-<section class="hero">
-  <h2>Agencia Tenerife JMM</h2>
-  <p>Gestión profesional para emisoras, administración, academia, avisos, pagos y crecimiento del equipo.</p>
-</section>
-
-<section class="grid">
-  <div class="card"><h3>👥 Total Emisoras</h3><h2>34</h2><small class="green">+3 esta semana</small></div>
-  <div class="card"><h3>📡 Emisoras Activas</h3><h2>29</h2><small class="green">85% del total</small></div>
-  <div class="card"><h3>👑 Administración</h3><h2>3</h2><small>Jesús, Ruth y Yandira</small></div>
-  <div class="card"><h3>🎓 Academia</h3><h2>125</h2><small class="green">Formación activa</small></div>
-</section>
-
-<section class="panel">
-  <div class="card">
-    <h2>🔥 Avisos Recientes</h2>
-    <div class="notice"><strong>Evento de Reclutamiento Activo</strong><br><small>Quedan 3 días para finalizar.</small></div>
-    <div class="notice"><strong>Nueva clase en Academia</strong><br><small>Cómo hacer un buen live.</small></div>
-    <div class="notice"><strong>Reunión general</strong><br><small>Domingo 18:00 hora Cuba.</small></div>
-  </div>
-
-  <div class="card">
-    <h2>⚡ Accesos Rápidos</h2><br>
-    <div class="quick">
-      <button>👤 Nueva Emisora</button>
-      <button>🎓 Academia</button>
-      <button>📋 Tareas</button>
-      <button>💰 Pagos</button>
-      <button>🔔 Avisos</button>
-      <button>📊 Reportes</button>
-    </div>
-  </div>
-</section>
-
+<div class="app"><header class="header">
+<div class="logo">🦅</div>
+<h1>AGENCIA <span>JM</span></h1>
+<p>Agencia Tenerife JMM · Panel profesional</p>
+</header><nav class="menu">
+<a href="#dashboard">🏠 Dashboard</a>
+<a href="#emisoras">👥 Emisoras</a>
+<a href="#academia">🎓 Academia</a>
+<a href="#tareas">📋 Tareas</a>
+<a href="#avisos">🔔 Avisos</a>
+<a href="#pagos">💰 Pagos</a>
+<a href="#reportes">📊 Reportes</a>
+</nav><section id="emisoras" class="page">
+<div class="hero"><h2>👥 Gestión de Emisoras</h2><p>Lista inicial editable de emisoras y administración.</p></div>
+<div class="card"><h3>Ruth María</h3><p>Cuba · Administración · Estado: Activa</p></div>
+<div class="card"><h3>Yandira Vives</h3><p>Cuba · Administración · Estado: Activa</p></div>
+<div class="card"><h3>Nueva Emisora</h3><p>ID, país, nivel y datos pendientes.</p></div>
+</section><section id="academia" class="page">
+<div class="hero"><h2>🎓 Academia Agencia JM</h2><p>Formación para nuevas emisoras.</p></div>
+<div class="card"><h3>Curso 1</h3><p>Primeros pasos en Poppo Live.</p></div>
+<div class="card"><h3>Curso 2</h3><p>Cómo hacer un buen live.</p></div>
+<div class="card"><h3>Curso 3</h3><p>Normas de Agencia Tenerife JMM.</p></div>
+</section><section id="tareas" class="page">
+<div class="hero"><h2>📋 Tareas</h2><p>Control de tareas pendientes del equipo.</p></div>
+</section><section id="avisos" class="page">
+<div class="hero"><h2>🔔 Avisos</h2><p>Noticias, reuniones y recordatorios importantes.</p></div>
+</section><section id="pagos" class="page">
+<div class="hero"><h2>💰 Pagos y Bonos</h2><p>Control de pagos, premios y bonos.</p></div>
+</section><section id="reportes" class="page">
+<div class="hero"><h2>📊 Reportes</h2><p>Estadísticas y crecimiento de la agencia.</p></div>
+</section><section id="dashboard">
+<div class="hero"><h2>Agencia Tenerife JMM</h2><p>Gestión profesional para emisoras, academia, avisos, pagos, tareas y crecimiento.</p></div><div class="grid">
+<div class="card"><h3>👥 Total Emisoras</h3><h2>34</h2><small class="green">+3 esta semana</small></div>
+<div class="card"><h3>📡 Emisoras Activas</h3><h2>29</h2><small class="green">85% del total</small></div>
+<div class="card"><h3>👑 Administración</h3><h2>3</h2><small class="blue">Jesús, Ruth y Yandira</small></div>
+<div class="card"><h3>🎓 Academia</h3><h2>125</h2><small class="green">Formación activa</small></div>
+</div><div class="panel">
+<div class="card">
+<h2>🔥 Avisos Recientes</h2>
+<div class="notice"><strong>Evento de Reclutamiento Activo</strong><br><small>Quedan 3 días para finalizar.</small></div>
+<div class="notice"><strong>Nueva clase en Academia</strong><br><small>Cómo hacer un buen live.</small></div>
+<div class="notice"><strong>Reunión general</strong><br><small>Domingo 18:00 hora Cuba.</small></div>
+</div><div class="card">
+<h2>⚡ Accesos Rápidos</h2><br>
+<div class="quick">
+<a href="#emisoras">👤 Nueva Emisora</a>
+<a href="#academia">🎓 Academia</a>
+<a href="#tareas">📋 Tareas</a>
+<a href="#pagos">💰 Pagos</a>
 </div>
+</div>
+</div>
+</section></div>
 </body>
 </html>
