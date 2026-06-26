@@ -6,67 +6,75 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#020817;color:white}
-.app{min-height:100vh;padding:18px;background:radial-gradient(circle at top,#008cff55,transparent 35%),linear-gradient(135deg,#020817,#061b3a)}
-.header{text-align:center;margin-bottom:22px}
-.logo{width:95px;height:95px;margin:auto;border-radius:50%;display:grid;place-items:center;font-size:48px;background:#031b3f;border:1px solid #159cff;box-shadow:0 0 30px #008cff}
-h1{font-size:34px;letter-spacing:3px;margin-top:12px}
-h1 span{color:#00aaff}
-p,small{color:#cde7ff}
-.menu{display:flex;gap:10px;overflow:auto;margin-bottom:18px}
-.menu a{color:white;text-decoration:none;background:#041d46;border:1px solid #0b8cff77;border-radius:14px;padding:13px 16px;white-space:nowrap}
-.menu a:hover{background:#075fc7}
-.hero,.card{background:#031b3fcc;border:1px solid #0b8cff66;border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:0 0 22px #0008}
-.hero{text-align:center;background:linear-gradient(145deg,#062d68,#020817)}
-.hero h2{font-size:30px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.card h2{font-size:42px}
-.card h3{color:#d8ecff;margin-bottom:8px}
-.green{color:#55ff85}
-.blue{color:#00aaff}
+.app{min-height:100vh;display:flex;background:radial-gradient(circle at top,#008cff55,transparent 35%),linear-gradient(135deg,#020817,#061b3a)}
+.sidebar{width:260px;background:#020b1f;border-right:1px solid #0b8cff66;padding:20px}
+.logo{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;font-size:48px;margin:0 auto 12px;background:#031b3f;border:1px solid #159cff;box-shadow:0 0 30px #008cff}
+.brand{text-align:center;margin-bottom:25px}
+.brand h1{font-size:26px;letter-spacing:2px}.brand span{color:#00aaff}.brand p{color:#bfe3ff}
+.menu a{display:block;color:white;text-decoration:none;background:#041d46;border:1px solid #0b8cff44;border-radius:14px;padding:14px;margin-bottom:10px}
+.menu a:hover,.menu a.active{background:#075fc7;box-shadow:0 0 18px #007bff66}
+.user{margin-top:25px;background:#031b3fcc;border:1px solid #0b8cff55;border-radius:16px;padding:15px}
+.user small{color:#cde7ff}
+.main{flex:1;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.top button{background:#041d46;color:white;border:1px solid #0b8cff66;border-radius:14px;padding:12px 16px}
+.hero{min-height:360px;border-radius:24px;padding:28px;display:flex;align-items:end;background:linear-gradient(to bottom,#00102722,#020817f2),radial-gradient(circle at center,#009dff55,transparent 45%),linear-gradient(135deg,#06306f,#020817);border:1px solid #0b8cff77;box-shadow:0 0 35px #005eff66;margin-bottom:18px}
+.hero h2{font-size:42px;letter-spacing:3px}.hero span{color:#00aaff}.hero p{max-width:650px;color:#d7ecff;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.card{background:#031b3fcc;border:1px solid #0b8cff66;border-radius:18px;padding:20px;box-shadow:0 0 20px #0008}
+.card h2{font-size:38px}.card h3{color:#d8ecff;margin-bottom:8px}.green{color:#55ff85}.blue{color:#00aaff}
 .panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.notice{padding:12px 0;border-bottom:1px solid #ffffff22}
+.notice{padding:12px 0;border-bottom:1px solid #ffffff22}.notice small{color:#cde7ff}
 .quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.quick a{color:white;text-align:center;text-decoration:none;border:1px solid #0b8cff66;border-radius:14px;padding:16px;background:#041d46}
-.page{display:none}
-.page:target{display:block}
-#dashboard{display:block}
-.page:target~#dashboard{display:none}
-@media(max-width:800px){.grid,.panel{grid-template-columns:1fr}h1{font-size:29px}.hero h2{font-size:24px}}
+.quick a{text-align:center;text-decoration:none;color:white;border:1px solid #0b8cff66;border-radius:14px;padding:16px;background:#041d46}
+.page{display:none}.page:target{display:block}#dashboard{display:block}.page:target~#dashboard{display:none}
+@media(max-width:850px){.app{display:block}.sidebar{width:100%}.menu{display:flex;overflow:auto;gap:8px}.menu a{white-space:nowrap}.grid,.panel{grid-template-columns:1fr}.hero{min-height:300px}.hero h2{font-size:30px}}
 </style>
 </head>
 <body>
-<div class="app"><header class="header">
+<div class="app"><aside class="sidebar">
+<div class="brand">
 <div class="logo">🦅</div>
 <h1>AGENCIA <span>JM</span></h1>
-<p>Agencia Tenerife JMM · Panel profesional</p>
-</header><nav class="menu">
-<a href="#dashboard">🏠 Dashboard</a>
+<p>Agencia Tenerife JMM</p>
+</div><nav class="menu">
+<a class="active" href="#dashboard">🏠 Dashboard</a>
 <a href="#emisoras">👥 Emisoras</a>
 <a href="#academia">🎓 Academia</a>
 <a href="#tareas">📋 Tareas</a>
 <a href="#avisos">🔔 Avisos</a>
 <a href="#pagos">💰 Pagos</a>
 <a href="#reportes">📊 Reportes</a>
-</nav><section id="emisoras" class="page">
-<div class="hero"><h2>👥 Gestión de Emisoras</h2><p>Lista inicial editable de emisoras y administración.</p></div>
+<a href="#config">⚙️ Configuración</a>
+</nav><div class="user">
+<strong>Jesús Melián</strong><br>
+<small>Agente principal</small><br>
+<small>Ruth María · Yandira Vives</small>
+</div>
+</aside><main class="main"><div class="top">
+<h2>Panel Principal</h2>
+<button>Agente ▾</button>
+</div><section id="emisoras" class="page">
+<div class="hero"><div><h2>👥 Emisoras</h2><p>Gestión de emisoras, administración, niveles y estados.</p></div></div>
 <div class="card"><h3>Ruth María</h3><p>Cuba · Administración · Estado: Activa</p></div>
 <div class="card"><h3>Yandira Vives</h3><p>Cuba · Administración · Estado: Activa</p></div>
-<div class="card"><h3>Nueva Emisora</h3><p>ID, país, nivel y datos pendientes.</p></div>
+<div class="card"><h3>Nueva Emisora</h3><p>ID Poppo · País · Nivel · WhatsApp · Estado.</p></div>
 </section><section id="academia" class="page">
-<div class="hero"><h2>🎓 Academia Agencia JM</h2><p>Formación para nuevas emisoras.</p></div>
+<div class="hero"><div><h2>🎓 Academia</h2><p>Cursos y formación para nuevas emisoras.</p></div></div>
 <div class="card"><h3>Curso 1</h3><p>Primeros pasos en Poppo Live.</p></div>
 <div class="card"><h3>Curso 2</h3><p>Cómo hacer un buen live.</p></div>
 <div class="card"><h3>Curso 3</h3><p>Normas de Agencia Tenerife JMM.</p></div>
-</section><section id="tareas" class="page">
-<div class="hero"><h2>📋 Tareas</h2><p>Control de tareas pendientes del equipo.</p></div>
-</section><section id="avisos" class="page">
-<div class="hero"><h2>🔔 Avisos</h2><p>Noticias, reuniones y recordatorios importantes.</p></div>
-</section><section id="pagos" class="page">
-<div class="hero"><h2>💰 Pagos y Bonos</h2><p>Control de pagos, premios y bonos.</p></div>
-</section><section id="reportes" class="page">
-<div class="hero"><h2>📊 Reportes</h2><p>Estadísticas y crecimiento de la agencia.</p></div>
-</section><section id="dashboard">
-<div class="hero"><h2>Agencia Tenerife JMM</h2><p>Gestión profesional para emisoras, academia, avisos, pagos, tareas y crecimiento.</p></div><div class="grid">
+</section><section id="tareas" class="page"><div class="hero"><div><h2>📋 Tareas</h2><p>Organización diaria del equipo.</p></div></div></section>
+<section id="avisos" class="page"><div class="hero"><div><h2>🔔 Avisos</h2><p>Noticias, reuniones y recordatorios.</p></div></div></section>
+<section id="pagos" class="page"><div class="hero"><div><h2>💰 Pagos y Bonos</h2><p>Control de pagos, premios y bonos.</p></div></div></section>
+<section id="reportes" class="page"><div class="hero"><div><h2>📊 Reportes</h2><p>Estadísticas y crecimiento de la agencia.</p></div></div></section>
+<section id="config" class="page"><div class="hero"><div><h2>⚙️ Configuración</h2><p>Datos, colores, logo y ajustes de la agencia.</p></div></div></section><section id="dashboard">
+<div class="hero">
+<div>
+<h2>AGENCIA <span>JM</span></h2>
+<p>Panel profesional para gestionar emisoras, academia, avisos, pagos, tareas y crecimiento de Agencia Tenerife JMM.</p>
+</div>
+</div><div class="grid">
 <div class="card"><h3>👥 Total Emisoras</h3><h2>34</h2><small class="green">+3 esta semana</small></div>
 <div class="card"><h3>📡 Emisoras Activas</h3><h2>29</h2><small class="green">85% del total</small></div>
 <div class="card"><h3>👑 Administración</h3><h2>3</h2><small class="blue">Jesús, Ruth y Yandira</small></div>
@@ -87,6 +95,7 @@ p,small{color:#cde7ff}
 </div>
 </div>
 </div>
-</section></div>
+</section></main>
+</div>
 </body>
-</html>
+  </html>
