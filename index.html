@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agencia JM</title>
+  <title>Agencia JM | Panel Principal</title>
+
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       background: #020817;
       color: white;
@@ -14,102 +20,247 @@
 
     .app {
       min-height: 100vh;
-      padding: 18px;
+      display: flex;
       background:
-        radial-gradient(circle at top, rgba(0,130,255,.35), transparent 35%),
+        radial-gradient(circle at top, rgba(0, 140, 255, 0.35), transparent 35%),
         linear-gradient(135deg, #020817, #061b3a);
     }
 
-    .title {
-      text-align: center;
-      margin-bottom: 18px;
+    .sidebar {
+      width: 260px;
+      background: rgba(2, 12, 31, 0.96);
+      border-right: 1px solid rgba(0, 170, 255, 0.35);
+      padding: 22px 16px;
     }
 
-    .title h1 {
-      font-size: 32px;
+    .brand {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .eagle {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #0b64c0, #021026 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      border: 1px solid #20a8ff;
+      box-shadow: 0 0 28px rgba(0, 170, 255, 0.45);
+    }
+
+    .brand h1 {
+      font-size: 24px;
       letter-spacing: 2px;
     }
 
-    .title span {
+    .brand span {
       color: #00aaff;
+    }
+
+    .brand p {
+      color: #b8dfff;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .menu a {
+      display: block;
+      padding: 14px;
+      margin-bottom: 9px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid transparent;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      background: linear-gradient(135deg, #075fc5, #052a5d);
+      border: 1px solid rgba(0, 170, 255, 0.45);
+      box-shadow: 0 0 18px rgba(0, 140, 255, 0.35);
+    }
+
+    .user-box {
+      margin-top: 28px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(0, 26, 61, 0.8);
+      border: 1px solid rgba(0, 170, 255, 0.25);
+    }
+
+    .user-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .user-box small {
+      color: #b9cce5;
+    }
+
+    .main {
+      flex: 1;
+      padding: 22px;
+      overflow: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .topbar h2 {
+      font-size: 26px;
+    }
+
+    .role {
+      background: rgba(0, 26, 61, 0.85);
+      border: 1px solid rgba(0, 170, 255, 0.35);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 14px;
     }
 
     .hero {
       min-height: 330px;
       border-radius: 22px;
+      padding: 24px;
+      display: flex;
+      align-items: end;
       background:
-        linear-gradient(to bottom, rgba(2,8,23,.05), rgba(2,8,23,.95)),
-        url("portada-agencia-jm.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
-      border: 1px solid rgba(0,170,255,.35);
-      box-shadow: 0 0 35px rgba(0,120,255,.25);
+        linear-gradient(to bottom, rgba(2, 8, 23, 0.1), rgba(2, 8, 23, 0.95)),
+        radial-gradient(circle at center, rgba(0, 170, 255, 0.28), transparent 50%),
+        linear-gradient(135deg, #06285c, #020817);
+      border: 1px solid rgba(0, 170, 255, 0.35);
+      box-shadow: 0 0 35px rgba(0, 110, 255, 0.25);
       margin-bottom: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 40px;
+      letter-spacing: 3px;
+    }
+
+    .hero-content span {
+      color: #00aaff;
+    }
+
+    .hero-content p {
+      max-width: 620px;
+      color: #d7e9ff;
+      margin-top: 10px;
+      line-height: 1.5;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
+      margin-bottom: 18px;
     }
 
     .card {
-      background: rgba(0, 26, 61, .85);
-      border: 1px solid rgba(0,170,255,.28);
+      background: rgba(0, 26, 61, 0.82);
+      border: 1px solid rgba(0, 170, 255, 0.28);
       border-radius: 16px;
       padding: 18px;
-      box-shadow: 0 0 18px rgba(0,0,0,.25);
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      color: #d9e5f5;
+      margin-bottom: 8px;
     }
 
     .card h2 {
       font-size: 36px;
-      margin: 0;
-    }
-
-    .card p {
-      color: #d9e5f5;
-      margin: 6px 0;
+      margin-bottom: 4px;
     }
 
     .green {
       color: #55ff85;
     }
 
+    .blue {
+      color: #00aaff;
+    }
+
     .panel {
-      margin-top: 18px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
 
-    .button-grid {
+    .notice {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .notice small {
+      color: #b9cce5;
+    }
+
+    .quick {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    button {
+    .quick button {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 170, 255, 0.35);
       background: #041d46;
       color: white;
-      border: 1px solid rgba(0,170,255,.35);
-      border-radius: 14px;
-      padding: 16px;
       font-size: 15px;
     }
 
-    .notice {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    @media(max-width: 900px) {
+      .app {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .panel {
+        grid-template-columns: 1fr;
+      }
     }
 
-    @media(max-width: 650px) {
-      .cards, .panel {
+    @media(max-width: 600px) {
+      .main {
+        padding: 14px;
+      }
+
+      .cards {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        min-height: 260px;
+        min-height: 280px;
+      }
+
+      .hero-content h1 {
+        font-size: 30px;
       }
     }
   </style>
@@ -118,58 +269,105 @@
 <body>
   <div class="app">
 
-    <div class="title">
-      <h1>AGENCIA <span>JM</span></h1>
-      <p>Panel principal de administración</p>
-    </div>
-
-    <section class="hero"></section>
-
-    <section class="cards">
-      <div class="card">
-        <h2>34</h2>
-        <p>Total Emisoras</p>
-        <small class="green">+3 esta semana</small>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="eagle">🦅</div>
+        <h1>AGENCIA <span>JM</span></h1>
+        <p>Agencia Tenerife JMM</p>
       </div>
 
-      <div class="card">
-        <h2>29</h2>
-        <p>Emisoras Activas</p>
-        <small class="green">85% del total</small>
+      <nav class="menu">
+        <a class="active" href="#">🏠 Dashboard</a>
+        <a href="#">👥 Emisoras</a>
+        <a href="#">🎓 Academia</a>
+        <a href="#">📋 Tareas</a>
+        <a href="#">🔔 Avisos</a>
+        <a href="#">📅 Calendario</a>
+        <a href="#">💰 Pagos y Bonos</a>
+        <a href="#">📊 Reportes</a>
+        <a href="#">⚙️ Configuración</a>
+      </nav>
+
+      <div class="user-box">
+        <strong>Jesús Melián</strong>
+        <small>Agente principal</small><br>
+        <small>Administración: Ruth María y Yandira Vives</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <h2>Panel Principal</h2>
+        <button class="role">Agente ▾</button>
       </div>
 
-      <div class="card">
-        <h2>3</h2>
-        <p>Administración</p>
-        <small class="green">Jesús, Ruth y Yandira</small>
-      </div>
-
-      <div class="card">
-        <h2>125</h2>
-        <p>Academia</p>
-        <small class="green">Formación activa</small>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="card">
-        <h3>🔥 Avisos Recientes</h3>
-        <div class="notice">Evento de Reclutamiento Activo</div>
-        <div class="notice">Nueva clase disponible en Academia</div>
-        <div class="notice">Reunión general domingo 18:00 Cuba</div>
-      </div>
-
-      <div class="card">
-        <h3>⚡ Accesos Rápidos</h3>
-        <div class="button-grid">
-          <button>Nueva Emisora</button>
-          <button>Academia</button>
-          <button>Tareas</button>
-          <button>Pagos</button>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>AGENCIA <span>JM</span></h1>
+          <p>Panel profesional para gestionar emisoras, academia, avisos, pagos, tareas y crecimiento de Agencia Tenerife JMM.</p>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <section class="cards">
+        <div class="card">
+          <h3>👥 Total Emisoras</h3>
+          <h2>34</h2>
+          <small class="green">+3 esta semana</small>
+        </div>
+
+        <div class="card">
+          <h3>📡 Emisoras Activas</h3>
+          <h2>29</h2>
+          <small class="green">85% del total</small>
+        </div>
+
+        <div class="card">
+          <h3>🛡️ Administración</h3>
+          <h2>3</h2>
+          <small class="blue">Equipo JMM</small>
+        </div>
+
+        <div class="card">
+          <h3>🎓 Academia</h3>
+          <h2>125</h2>
+          <small class="green">Formación activa</small>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="card">
+          <h2>🔥 Avisos Recientes</h2>
+
+          <div class="notice">
+            <strong>Evento de Reclutamiento Activo</strong>
+            <small>Quedan 3 días para finalizar el evento.</small>
+          </div>
+
+          <div class="notice">
+            <strong>Nueva clase en Academia</strong>
+            <small>Cómo hacer un buen live y aumentar audiencia.</small>
+          </div>
+
+          <div class="notice">
+            <strong>Reunión general</strong>
+            <small>Domingo 18:00 hora Cuba.</small>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>⚡ Accesos Rápidos</h2>
+          <div class="quick">
+            <button>👤 Nueva Emisora</button>
+            <button>🎓 Academia</button>
+            <button>📋 Tareas</button>
+            <button>💰 Pagos</button>
+            <button>🔔 Avisos</button>
+            <button>📊 Reportes</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
 </body>
 </html>
