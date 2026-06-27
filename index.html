@@ -329,7 +329,11 @@
 
     document.getElementById("rolUsuario").innerText =
       "Rol: " + perfilActual.rol;
-
+if (perfilActual.rol === "creador") {
+  document.getElementById("btnCreador").classList.remove("hidden");
+} else {
+  document.getElementById("btnCreador").classList.add("hidden");
+}
     cargarPerfil();
     cargarAvisos();
     cargarTareas();
