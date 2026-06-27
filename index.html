@@ -1,211 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agencia JM v9</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agencia JM v10</title>
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-    body{background:#06101f;color:white;min-height:100vh}
-    header{padding:22px;text-align:center;background:linear-gradient(135deg,#004cff,#00c8ff);border-bottom:3px solid #ffd700}
-    header h1{font-size:26px}
-    header p{font-size:14px;margin-top:6px}
-    .container{max-width:900px;margin:auto;padding:18px}
-    .card{background:#101d33;border:1px solid #238cff;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 0 18px #0077ff33}
-    h2{color:#ffd700;margin-bottom:12px}
-    input,select,textarea{width:100%;padding:13px;margin:7px 0;border-radius:12px;border:1px solid #2d8cff;background:#07111f;color:white;font-size:15px}
-    textarea{min-height:90px}
-    button{width:100%;padding:14px;border:none;border-radius:14px;background:linear-gradient(135deg,#0066ff,#00c8ff);color:white;font-weight:bold;font-size:15px;margin:6px 0}
-    button.gold{background:linear-gradient(135deg,#ffb300,#ffe066);color:#111}
-    button.red{background:linear-gradient(135deg,#ff3b3b,#a00018)}
-    button.green{background:linear-gradient(135deg,#00b86b,#00e69a)}
-    .hidden{display:none}
-    .grid{display:grid;grid-template-columns:1fr;gap:10px}
-    .item{background:#07111f;border:1px solid #264b82;border-radius:14px;padding:12px;margin-bottom:10px}
-    .item strong{color:#ffd700}
-    .badge{display:inline-block;background:#ffd700;color:#111;border-radius:999px;padding:6px 11px;font-weight:bold;font-size:12px;margin:5px 0}
-    nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-    .small{font-size:13px;opacity:.85}
-    @media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#06101f;color:white;font-family:Arial,sans-serif}
+header{background:linear-gradient(135deg,#0066ff,#00cfff);padding:28px;text-align:center;border-bottom:4px solid #ffd700}
+header h1{font-size:30px}
+header p{font-size:15px;margin-top:8px}
+.container{max-width:900px;margin:auto;padding:20px}
+.card{background:#101d33;border:1px solid #1e90ff;border-radius:22px;padding:22px;margin:18px 0;box-shadow:0 0 12px #0066ff55}
+h2{color:#ffd700;margin-bottom:18px;font-size:28px}
+input,select,textarea{width:100%;padding:15px;margin:8px 0;border-radius:14px;border:1px solid #1e90ff;background:#071426;color:white;font-size:16px}
+textarea{min-height:110px}
+button{width:100%;padding:16px;margin:8px 0;border:0;border-radius:18px;font-size:18px;font-weight:bold;color:white;background:linear-gradient(135deg,#007bff,#00d4ff)}
+button.green{background:linear-gradient(135deg,#00b894,#00e676)}
+button.red{background:linear-gradient(135deg,#ff3333,#b00020)}
+button.gold{background:linear-gradient(135deg,#ffcc00,#ffe680);color:#111}
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.item{background:#071426;border:1px solid #1e90ff;border-radius:14px;padding:14px;margin:10px 0;font-size:17px}
+.item strong{color:#ffd700}
+.badge{display:inline-block;background:#ffd700;color:#111;padding:10px 18px;border-radius:30px;font-weight:bold;margin:8px 0}
+.small{font-size:13px;opacity:.8}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🦅 Agencia JM v9</h1>
+  <h1>🦅 Agencia JM v10</h1>
   <p>Aplicación profesional para emisoras, administración y creador</p>
 </header>
 
 <div class="container">
 
-  <section id="inicio" class="card">
-    <h2>Bienvenida</h2>
-    <p>Accede o regístrate para entrar al panel privado de Agencia JM.</p>
-    <br>
-    <button onclick="mostrar('login')">Iniciar sesión</button>
-    <button class="gold" onclick="mostrar('registro')">Registrarse como emisora</button>
-  </section>
-
-  <section id="login" class="card hidden">
-    <h2>Iniciar sesión</h2>
-    <input id="loginEmail" type="email" placeholder="Correo electrónico">
-    <input id="loginPassword" type="password" placeholder="Contraseña">
-    <button onclick="iniciarSesion()">Entrar</button>
-    <button onclick="recuperarPassword()">Recuperar contraseña</button>
-    <button class="red" onclick="mostrar('inicio')">Volver</button>
-  </section>
-
-  <section id="registro" class="card hidden">
-    <h2>Registro de emisora</h2>
-    <input id="regNombre" placeholder="Nombre artístico">
-    <input id="regEmail" type="email" placeholder="Correo electrónico">
-    <input id="regPassword" type="password" placeholder="Contraseña">
-    <input id="regPoppoId" placeholder="ID de Poppo">
-    <select id="regPais">
-      <option value="">Selecciona país</option>
-      <option>Cuba</option>
-      <option>España</option>
-      <option>Venezuela</option>
-      <option>Colombia</option>
-      <option>Otro</option>
-    </select>
-    <button class="green" onclick="registrarEmisora()">Crear cuenta</button>
-    <button class="red" onclick="mostrar('inicio')">Volver</button>
-  </section>
-
-  <section id="panel" class="hidden">
-
-    <div class="card">
-      <h2>Panel principal</h2>
-      <p id="bienvenida"></p>
-      <span id="rolUsuario" class="badge"></span>
-      <button class="red" onclick="cerrarSesion()">Cerrar sesión</button>
-    </div>
-
-    <nav>
-      <button onclick="abrirSeccion('perfil')">Perfil</button>
-      <button onclick="abrirSeccion('academia')">Academia</button>
-      <button onclick="abrirSeccion('avisos')">Avisos</button>
-      <button onclick="abrirSeccion('tareas')">Tareas</button>
-      <button onclick="abrirSeccion('pagos')">Pagos</button>
-      <button onclick="abrirSeccion('emisoras')">Emisoras</button>
-      <button id="btnCreador" class="gold hidden" onclick="abrirCreador()">👑 Creador</button>
-      <button onclick="abrirSeccion('contacto')">Contacto</button>
-    </nav>
-
-    <section id="perfil" class="card seccion">
-      <h2>Mi perfil</h2>
-      
-      <div id="datosPerfil"></div>
-
-<button class="gold" onclick="abrirEditorPerfil()">✏️ Editar mi perfil</button>
-
-    </section>
-<section id="editarPerfil" class="card seccion hidden">
-  <h2>✏️ Editar mi perfil</h2>
-
-  <input id="editTelefono" placeholder="Teléfono">
-  <input id="editWhatsapp" placeholder="WhatsApp">
-  <input id="editInstagram" placeholder="Instagram">
-  <input id="editFacebook" placeholder="Facebook">
-  <input id="editTikTok" placeholder="TikTok">
-
-  <textarea id="editDescripcion" placeholder="Descripción personal"></textarea>
-
-  <button class="green" onclick="guardarPerfil()">💾 Guardar cambios</button>
-  <button class="red" onclick="abrirSeccion('perfil')">Cancelar</button>
+<section id="inicio" class="card">
+  <h2>Bienvenida</h2>
+  <p>Accede o regístrate para entrar al panel privado.</p>
+  <button onclick="mostrar('login')">Iniciar sesión</button>
+  <button class="gold" onclick="mostrar('registro')">Registro de emisora</button>
 </section>
-    <section id="academia" class="card seccion hidden">
-      <h2>Academia</h2>
-      <div class="item"><strong>Clase 1:</strong> Primeros pasos en Poppo Live.</div>
-      <div class="item"><strong>Clase 2:</strong> Normas de transmisión.</div>
-      <div class="item"><strong>Clase 3:</strong> Cómo mejorar tus horas.</div>
-      <div class="item"><strong>Clase 4:</strong> Cómo cuidar tu sala.</div>
-    </section>
 
-    <section id="avisos" class="card seccion hidden">
-      <h2>Avisos</h2>
-      <div id="listaAvisos"></div>
-    </section>
+<section id="login" class="card hidden">
+  <h2>Iniciar sesión</h2>
+  <input id="loginEmail" type="email" placeholder="Correo">
+  <input id="loginPassword" type="password" placeholder="Contraseña">
+  <button class="green" onclick="iniciarSesion()">Entrar</button>
+  <button onclick="recuperarPassword()">Recuperar contraseña</button>
+  <button class="red" onclick="mostrar('inicio')">Volver</button>
+</section>
 
-    <section id="tareas" class="card seccion hidden">
-      <h2>Tareas</h2>
-      <div id="listaTareas"></div>
-    </section>
+<section id="registro" class="card hidden">
+  <h2>Registro de emisora</h2>
+  <input id="regNombre" placeholder="Nombre">
+  <input id="regEmail" type="email" placeholder="Correo">
+  <input id="regPassword" type="password" placeholder="Contraseña">
+  <input id="regPoppoId" placeholder="ID Poppo">
+  <select id="regPais">
+    <option value="Cuba">Cuba</option>
+    <option value="España">España</option>
+    <option value="Venezuela">Venezuela</option>
+    <option value="Colombia">Colombia</option>
+    <option value="Otro">Otro</option>
+  </select>
+  <button class="green" onclick="registrarEmisora()">Crear cuenta</button>
+  <button class="red" onclick="mostrar('inicio')">Volver</button>
+</section>
 
-    <section id="pagos" class="card seccion hidden">
-      <h2>Pagos</h2>
-      <div id="listaPagos"></div>
-    </section>
+<section id="panel" class="hidden">
 
-    <section id="emisoras" class="card seccion hidden">
-      <h2>Emisoras registradas</h2>
-      <div id="listaEmisoras"></div>
-    </section>
+  <div class="card">
+    <h2>Panel principal</h2>
+    <p id="bienvenida"></p>
+    <span id="rolUsuario" class="badge"></span>
+    <button class="red" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
 
-    <section id="creador" class="card seccion hidden">
-      <h2>Zona protegida del creador</h2>
+  <nav class="grid">
+    <button onclick="abrirSeccion('perfil')">Perfil</button>
+    <button onclick="abrirSeccion('academia')">Academia</button>
+    <button onclick="abrirSeccion('avisos')">Avisos</button>
+    <button onclick="abrirSeccion('tareas')">Tareas</button>
+    <button onclick="abrirSeccion('pagos')">Pagos</button>
+    <button onclick="abrirSeccion('emisoras')">Emisoras</button>
+    <button id="btnCreador" class="gold hidden" onclick="abrirCreador()">👑 Creador</button>
+    <button onclick="abrirSeccion('contacto')">Contacto</button>
+  </nav>
 
-      <h3>Crear aviso</h3>
-      <textarea id="nuevoAviso" placeholder="Escribe un aviso"></textarea>
-      <button onclick="crearAviso()">Guardar aviso</button>
+  <section id="perfil" class="card seccion">
+    <h2>Mi perfil</h2>
+    <div id="datosPerfil"></div>
+    <button class="gold" onclick="abrirEditorPerfil()">✏️ Editar mi perfil</button>
+  </section>
 
-      <h3>Crear tarea</h3>
-      <textarea id="nuevaTarea" placeholder="Escribe una tarea"></textarea>
-      <button onclick="crearTarea()">Guardar tarea</button>
+  <section id="editarPerfil" class="card seccion hidden">
+    <h2>✏️ Editar mi perfil</h2>
+    <input id="editTelefono" placeholder="Teléfono">
+    <input id="editWhatsapp" placeholder="WhatsApp">
+    <input id="editInstagram" placeholder="Instagram">
+    <input id="editFacebook" placeholder="Facebook">
+    <input id="editTikTok" placeholder="TikTok">
+    <textarea id="editDescripcion" placeholder="Descripción personal / bio"></textarea>
+    <button class="green" onclick="guardarPerfil()">💾 Guardar cambios</button>
+    <button class="red" onclick="abrirSeccion('perfil')">Cancelar</button>
+  </section>  <section id="academia" class="card seccion hidden">
+    <h2>🎓 Academia</h2>
+    <p>Próximamente cursos, vídeos y formación.</p>
+  </section>
 
-      <h3>Registrar pago</h3>
-      <input id="pagoEmail" placeholder="Correo de la emisora">
-      <input id="pagoDetalle" placeholder="Detalle del pago">
-      <button onclick="crearPago()">Guardar pago</button>
+  <section id="avisos" class="card seccion hidden">
+    <h2>📢 Avisos</h2>
+    <div id="listaAvisos"></div>
+  </section>
 
-      <h3>Cambiar rol</h3>
-      <input id="rolEmail" placeholder="Correo del usuario">
-      <select id="rolNuevo">
-        <option value="emisora">emisora</option>
-        <option value="admin">admin</option>
-        <option value="creador">creador</option>
-      </select>
-      <button class="gold" onclick="cambiarRol()">Cambiar rol</button>
-    </section>
+  <section id="tareas" class="card seccion hidden">
+    <h2>📋 Tareas</h2>
+    <div id="listaTareas"></div>
+  </section>
 
-    <section id="contacto" class="card seccion hidden">
-      <h2>Contacto</h2>
-      <div class="item"><strong>Agente:</strong> Jesús Melián</div>
-      <div class="item"><strong>Administración:</strong> Ruth María</div>
-      <div class="item"><strong>Administración:</strong> Yandira Vives</div>
-    </section>
+  <section id="pagos" class="card seccion hidden">
+    <h2>💰 Pagos</h2>
+    <div id="listaPagos"></div>
+  </section>
+
+  <section id="emisoras" class="card seccion hidden">
+    <h2>👩‍💼 Emisoras</h2>
+    <div id="listaEmisoras"></div>
+  </section>
+
+  <section id="contacto" class="card seccion hidden">
+    <h2>☎️ Contacto</h2>
+    <p>Administración Agencia JM</p>
+  </section>
+
+  <section id="creador" class="card seccion hidden">
+    <h2>👑 Panel del Creador</h2>
+
+    <button class="gold">Administrar Emisoras</button>
+    <button class="gold">Editar País</button>
+    <button class="gold">Editar ID Poppo</button>
+    <button class="gold">Editar Rol</button>
+    <button class="gold">Editar Nivel</button>
+    <button class="gold">Editar Estado</button>
+
+    <hr>
+
+    <button>💬 Chat General</button>
+    <button>🛠️ Chat de Incidencias</button>
+
+    <hr>
+
+    <button class="green">➕ Nuevo Aviso</button>
+    <button class="green">➕ Nueva Tarea</button>
+    <button class="green">➕ Nuevo Pago</button>
 
   </section>
 
-        </div><script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    sendPasswordResetEmail,
-    onAuthStateChanged
-  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+</section>
 
-  import {
-    getFirestore,
-    doc,
-    setDoc,
-    getDoc,
-    collection,
-    addDoc,
-    getDocs,
-    updateDoc,
-    serverTimestamp,
-    query,
-    orderBy
-  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+</div><script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
-  const firebaseConfig = {
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+const firebaseConfig = {
   apiKey: "AIzaSyBLjbeblx9a5cMb-iSEq4NfQu-5Sqtv63w",
   authDomain: "agencia-jm-8076e.firebaseapp.com",
   projectId: "agencia-jm-8076e",
@@ -215,351 +193,199 @@
   measurementId: "G-909H4ZD0MN"
 };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  let usuarioActual = null;
-  let perfilActual = null;
+let usuarioActual = null;
+let perfilActual = null;
 
-  const CREADOR_EMAIL = "jesus@agenciajm.com";
+const CORREO_CREADOR = "elpepolan35@gmail.com";
 
-  window.mostrar = function(id) {
-    document.querySelectorAll(".container > section").forEach(s => s.classList.add("hidden"));
-    document.getElementById(id).classList.remove("hidden");
-  };
-
-  window.abrirSeccion = function(id) {
-    document.querySelectorAll(".seccion").forEach(s => s.classList.add("hidden"));
-    document.getElementById(id).classList.remove("hidden");
-  };
-
-  window.registrarEmisora = async function() {
-    const nombre = document.getElementById("regNombre").value.trim();
-    const email = document.getElementById("regEmail").value.trim().toLowerCase();
-    const password = document.getElementById("regPassword").value.trim();
-    const poppoId = document.getElementById("regPoppoId").value.trim();
-    const pais = document.getElementById("regPais").value;
-
-    if (!nombre || !email || !password || !poppoId || !pais) {
-      alert("Completa todos los datos.");
-      return;
-    }
-
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, email, password);
-      const rol = email === CREADOR_EMAIL ? "creador" : "emisora";
-
-      await setDoc(doc(db, "usuarios", cred.user.uid), {
-        uid: cred.user.uid,
-        nombre,
-        email,
-        poppoId,
-        pais,
-        nivel: "Pendiente",
-        estado: "Activa",
-        rol,
-        creado: serverTimestamp()
-      });
-
-      alert("Cuenta creada correctamente.");
-    } catch (error) {
-      alert("Error al registrar: " + error.message);
-    }
-  };
-
-  window.iniciarSesion = async function() {
-    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-    const password = document.getElementById("loginPassword").value.trim();
-
-    if (!email || !password) {
-      alert("Escribe correo y contraseña.");
-      return;
-    }
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      alert("Error al iniciar sesión: " + error.message);
-    }
-  };
-
-  window.recuperarPassword = async function() {
-    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-
-    if (!email) {
-      alert("Escribe tu correo primero.");
-      return;
-    }
-
-    try {
-      await sendPasswordResetEmail(auth, email);
-      alert("Te envié un correo para recuperar la contraseña.");
-    } catch (error) {
-      alert("Error: " + error.message);
-    }
-  };
-
-  window.cerrarSesion = async function() {
-    await signOut(auth);
-  };
-
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      usuarioActual = null;
-      perfilActual = null;
-      mostrar("inicio");
-      return;
-    }
-
-    usuarioActual = user;
-
-    const ref = doc(db, "usuarios", user.uid);
-    const snap = await getDoc(ref);
-
-    if (!snap.exists()) {
-      await setDoc(ref, {
-        uid: user.uid,
-        nombre: user.email,
-        email: user.email,
-        poppoId: "Pendiente",
-        pais: "Pendiente",
-        nivel: "Pendiente",
-        estado: "Activa",
-        rol: user.email === CREADOR_EMAIL ? "creador" : "emisora",
-        creado: serverTimestamp()
-      });
-    }
-
-    const nuevoSnap = await getDoc(ref);
-    perfilActual = nuevoSnap.data();
-
-    cargarPanel();
+window.mostrar = function(id) {
+  document.querySelectorAll(".container > section").forEach(sec => {
+    sec.classList.add("hidden");
   });
+  document.getElementById(id).classList.remove("hidden");
+};
 
-  async function cargarPanel() {
-    mostrar("panel");
+window.abrirSeccion = function(id) {
+  document.querySelectorAll(".seccion").forEach(sec => {
+    sec.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+};
+
+window.registrarEmisora = async function() {
+  const nombre = document.getElementById("regNombre").value.trim();
+  const email = document.getElementById("regEmail").value.trim().toLowerCase();
+  const password = document.getElementById("regPassword").value.trim();
+  const poppoId = document.getElementById("regPoppoId").value.trim();
+  const pais = document.getElementById("regPais").value;
+
+  if (!nombre || !email || !password || !poppoId || !pais) {
+    alert("Completa todos los datos.");
+    return;
+  }
+
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+
+    const rol = email === CORREO_CREADOR ? "creador" : "emisora";
+
+    await setDoc(doc(db, "usuarios", cred.user.uid), {
+      uid: cred.user.uid,
+      nombre: nombre,
+      email: email,
+      poppoId: poppoId,
+      pais: pais,
+      rol: rol,
+      nivel: "Pendiente",
+      estado: "Activa",
+      telefono: "",
+      whatsapp: "",
+      instagram: "",
+      facebook: "",
+      tiktok: "",
+      descripcion: "",
+      creado: serverTimestamp()
+    });
+
+    alert("Cuenta creada correctamente.");
+  } catch (error) {
+    alert("Error al registrar: " + error.message);
+  }
+};
+
+window.iniciarSesion = async function() {
+  const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+  const password = document.getElementById("loginPassword").value.trim();
+
+  if (!email || !password) {
+    alert("Escribe correo y contraseña.");
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    alert("Error al iniciar sesión: " + error.message);
+  }
+};
+
+window.recuperarPassword = async function() {
+  const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+
+  if (!email) {
+    alert("Escribe tu correo primero.");
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    alert("Te envié un correo para recuperar la contraseña.");
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
+};
+
+window.cerrarSesion = async function() {
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, async function(user) {
+  if (!user) {
+    usuarioActual = null;
+    perfilActual = null;
+    mostrar("inicio");
+    return;
+  }
+
+  usuarioActual = user;
+
+  const ref = doc(db, "usuarios", user.uid);
+  const snap = await getDoc(ref);
+
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      uid: user.uid,
+      nombre: user.email,
+      email: user.email,
+      poppoId: "Pendiente",
+      pais: "Pendiente",
+      rol: user.email === CORREO_CREADOR ? "creador" : "emisora",
+      nivel: "Pendiente",
+      estado: "Activa",
+      telefono: "",
+      whatsapp: "",
+      instagram: "",
+      facebook: "",
+      tiktok: "",
+      descripcion: "",
+      creado: serverTimestamp()
+    });
+  }
+
+  const nuevoSnap = await getDoc(ref);
+  perfilActual = nuevoSnap.data();
+window.usuarioActual = usuarioActual;
+window.perfilActual = perfilActual;
+  cargarPanel();
+window.cargarPanel = function() {
+  mostrar("panel");
+  abrirSeccion("perfil");
+
+  document.getElementById("bienvenida").innerText =
+    "Hola, " + (perfilActual.nombre || perfilActual.email);
+
+  document.getElementById("rolUsuario").innerText =
+    "Rol: " + perfilActual.rol;
+
+  if (perfilActual.rol === "creador") {
+    document.getElementById("btnCreador").classList.remove("hidden");
+  } else {
+    document.getElementById("btnCreador").classList.add("hidden");
+  }
+
+  cargarPerfil();
+};
+
+window.cargarPerfil = function() {
+  document.getElementById("datosPerfil").innerHTML = `
+    <div class="item"><strong>Nombre:</strong> ${perfilActual.nombre || ""}</div>
+    <div class="item"><strong>Correo:</strong> ${perfilActual.email || ""}</div>
+    <div class="item"><strong>ID Poppo:</strong> ${perfilActual.poppoId || ""}</div>
+    <div class="item"><strong>País:</strong> ${perfilActual.pais || ""}</div>
+    <div class="item"><strong>Nivel:</strong> ${perfilActual.nivel || ""}</div>
+    <div class="item"><strong>Estado:</strong> ${perfilActual.estado || ""}</div>
+    <div class="item"><strong>Teléfono:</strong> ${perfilActual.telefono || ""}</div>
+    <div class="item"><strong>WhatsApp:</strong> ${perfilActual.whatsapp || ""}</div>
+    <div class="item"><strong>Instagram:</strong> ${perfilActual.instagram || ""}</div>
+    <div class="item"><strong>Facebook:</strong> ${perfilActual.facebook || ""}</div>
+    <div class="item"><strong>TikTok:</strong> ${perfilActual.tiktok || ""}</div>
+    <div class="item"><strong>Bio:</strong> ${perfilActual.descripcion || ""}</div>
+  `;
+};
+
+window.abrirCreador = function() {
+  if (!perfilActual || perfilActual.rol !== "creador") {
+    alert("Zona protegida. Solo puede entrar el creador.");
     abrirSeccion("perfil");
-
-    document.getElementById("bienvenida").innerText =
-      "Hola, " + perfilActual.nombre + ". Bienvenida al panel privado.";
-
-    document.getElementById("rolUsuario").innerText =
-      "Rol: " + perfilActual.rol;
-if (perfilActual.rol === "creador") {
-  document.getElementById("btnCreador").classList.remove("hidden");
-} else {
-  document.getElementById("btnCreador").classList.add("hidden");
-}
-    cargarPerfil();
-    cargarAvisos();
-    cargarTareas();
-    cargarPagos();
-    cargarEmisoras();
+    return;
   }
 
-  function cargarPerfil() {
-    document.getElementById("datosPerfil").innerHTML = `
-      <div class="item"><strong>Nombre:</strong> ${perfilActual.nombre}</div>
-      <div class="item"><strong>Correo:</strong> ${perfilActual.email}</div>
-      <div class="item"><strong>ID Poppo:</strong> ${perfilActual.poppoId}</div>
-      <div class="item"><strong>País:</strong> ${perfilActual.pais}</div>
-      <div class="item"><strong>Nivel:</strong> ${perfilActual.nivel}</div>
-      <div class="item"><strong>Estado:</strong> ${perfilActual.estado}</div>
-      <div class="item"><strong>Rol:</strong> ${perfilActual.rol}</div>
-    `;
-  }
+  abrirSeccion("creador");
+};
+  window.abrirEditorPerfil = function() {
+  document.getElementById("editTelefono").value = perfilActual.telefono || "";
+  document.getElementById("editWhatsapp").value = perfilActual.whatsapp || "";
+  document.getElementById("editInstagram").value = perfilActual.instagram || "";
+  document.getElementById("editFacebook").value = perfilActual.facebook || "";
+  document.getElementById("editTikTok").value = perfilActual.tiktok || "";
+  document.getElementById("editDescripcion").value = perfilActual.descripcion || "";
 
-  window.abrirCreador = function() {
-    if (!perfilActual || perfilActual.rol !== "creador") {
-      alert("Zona protegida. Solo puede entrar el creador.");
-      abrirSeccion("perfil");
-      return;
-    }
-    abrirSeccion("creador");
-  };
-
-  async function cargarAvisos() {
-    const box = document.getElementById("listaAvisos");
-    box.innerHTML = "";
-
-    const q = query(collection(db, "avisos"), orderBy("creado", "desc"));
-    const datos = await getDocs(q);
-
-    if (datos.empty) {
-      box.innerHTML = "<p>No hay avisos todavía.</p>";
-      return;
-    }
-
-    datos.forEach(docu => {
-      const a = docu.data();
-      box.innerHTML += `<div class="item"><strong>Aviso:</strong><br>${a.texto}</div>`;
-    });
-  }
-
-  async function cargarTareas() {
-    const box = document.getElementById("listaTareas");
-    box.innerHTML = "";
-
-    const q = query(collection(db, "tareas"), orderBy("creado", "desc"));
-    const datos = await getDocs(q);
-
-    if (datos.empty) {
-      box.innerHTML = "<p>No hay tareas todavía.</p>";
-      return;
-    }
-
-    datos.forEach(docu => {
-      const t = docu.data();
-      box.innerHTML += `<div class="item"><strong>Tarea:</strong><br>${t.texto}</div>`;
-    });
-  }
-
-  async function cargarPagos() {
-    const box = document.getElementById("listaPagos");
-    box.innerHTML = "";
-
-    const datos = await getDocs(collection(db, "pagos"));
-
-    if (datos.empty) {
-      box.innerHTML = "<p>No hay pagos registrados.</p>";
-      return;
-    }
-
-    datos.forEach(docu => {
-      const p = docu.data();
-
-      if (
-        perfilActual.rol === "creador" ||
-        perfilActual.rol === "admin" ||
-        p.email === perfilActual.email
-      ) {
-        box.innerHTML += `
-          <div class="item">
-            <strong>Pago:</strong><br>
-            Emisora: ${p.email}<br>
-            Detalle: ${p.detalle}
-          </div>
-        `;
-      }
-    });
-  }
-
-  async function cargarEmisoras() {
-    const box = document.getElementById("listaEmisoras");
-    box.innerHTML = "";
-
-    if (!["creador", "admin"].includes(perfilActual.rol)) {
-      box.innerHTML = "<p>Solo administración puede ver esta sección.</p>";
-      return;
-    }
-
-    const datos = await getDocs(collection(db, "usuarios"));
-
-    datos.forEach(docu => {
-      const u = docu.data();
-      box.innerHTML += `
-        <div class="item">
-          <strong>${u.nombre}</strong><br>
-          Correo: ${u.email}<br>
-          ID Poppo: ${u.poppoId}<br>
-          País: ${u.pais}<br>
-          Nivel: ${u.nivel}<br>
-          Estado: ${u.estado}<br>
-          Rol: ${u.rol}
-        </div>
-      `;
-    });
-  }
-
-  window.crearAviso = async function() {
-    if (perfilActual.rol !== "creador") return alert("Solo el creador puede crear avisos.");
-
-    const texto = document.getElementById("nuevoAviso").value.trim();
-    if (!texto) return alert("Escribe un aviso.");
-
-    await addDoc(collection(db, "avisos"), {
-      texto,
-      autor: perfilActual.email,
-      creado: serverTimestamp()
-    });
-
-    document.getElementById("nuevoAviso").value = "";
-    cargarAvisos();
-    alert("Aviso guardado.");
-  };
-
-  window.crearTarea = async function() {
-    if (perfilActual.rol !== "creador") return alert("Solo el creador puede crear tareas.");
-
-    const texto = document.getElementById("nuevaTarea").value.trim();
-    if (!texto) return alert("Escribe una tarea.");
-
-    await addDoc(collection(db, "tareas"), {
-      texto,
-      autor: perfilActual.email,
-      creado: serverTimestamp()
-    });
-
-    document.getElementById("nuevaTarea").value = "";
-    cargarTareas();
-    alert("Tarea guardada.");
-  };
-
-  window.crearPago = async function() {
-    if (perfilActual.rol !== "creador") return alert("Solo el creador puede registrar pagos.");
-
-    const email = document.getElementById("pagoEmail").value.trim().toLowerCase();
-    const detalle = document.getElementById("pagoDetalle").value.trim();
-
-    if (!email || !detalle) return alert("Completa correo y detalle.");
-
-    await addDoc(collection(db, "pagos"), {
-      email,
-      detalle,
-      autor: perfilActual.email,
-      creado: serverTimestamp()
-    });
-
-    document.getElementById("pagoEmail").value = "";
-    document.getElementById("pagoDetalle").value = "";
-    cargarPagos();
-    alert("Pago guardado.");
-  };
-
-  window.cambiarRol = async function() {
-    if (perfilActual.rol !== "creador") return alert("Solo el creador puede cambiar roles.");
-
-    const email = document.getElementById("rolEmail").value.trim().toLowerCase();
-    const nuevoRol = document.getElementById("rolNuevo").value;
-
-    const datos = await getDocs(collection(db, "usuarios"));
-    let encontrado = false;
-
-    for (const docu of datos.docs) {
-      const u = docu.data();
-
-      if (u.email === email) {
-        await updateDoc(doc(db, "usuarios", docu.id), {
-          rol: nuevoRol
-        });
-        encontrado = true;
-      }
-    }
-
-    if (!encontrado) return alert("No encontré ese usuario.");
-
-    alert("Rol actualizado.");
-    cargarEmisoras();
-  };
-          window.abrirEditorPerfil = function() {
   abrirSeccion("editarPerfil");
 };
-
-window.guardarPerfil = async function() {
-  alert("La función de guardar perfil será conectada a Firebase en el siguiente paso.");
-};
 </script>
-
 </body>
 </html>
