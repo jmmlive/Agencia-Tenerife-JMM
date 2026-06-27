@@ -99,7 +99,20 @@
       <h2>Mi perfil</h2>
       <div id="datosPerfil"></div>
     </section>
-<button class="gold" onclick="abrirEditorPerfil()">✏️ Editar mi perfil</button>
+<section id="editarPerfil" class="card seccion hidden">
+  <h2>✏️ Editar mi perfil</h2>
+
+  <input id="editTelefono" placeholder="Teléfono">
+  <input id="editWhatsapp" placeholder="WhatsApp">
+  <input id="editInstagram" placeholder="Instagram">
+  <input id="editFacebook" placeholder="Facebook">
+  <input id="editTikTok" placeholder="TikTok">
+
+  <textarea id="editDescripcion" placeholder="Descripción personal"></textarea>
+
+  <button class="green" onclick="guardarPerfil()">💾 Guardar cambios</button>
+  <button class="red" onclick="abrirSeccion('perfil')">Cancelar</button>
+</section>
     <section id="academia" class="card seccion hidden">
       <h2>Academia</h2>
       <div class="item"><strong>Clase 1:</strong> Primeros pasos en Poppo Live.</div>
@@ -535,6 +548,13 @@ if (perfilActual.rol === "creador") {
     alert("Rol actualizado.");
     cargarEmisoras();
   };
+          window.abrirEditorPerfil = function() {
+  abrirSeccion("editarPerfil");
+};
+
+window.guardarPerfil = async function() {
+  alert("La función de guardar perfil será conectada a Firebase en el siguiente paso.");
+};
 </script>
 
 </body>
