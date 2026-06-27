@@ -1,190 +1,669 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agencia Tenerife JMM</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:linear-gradient(160deg,#00142f,#003b88,#0072ff);color:white;min-height:100vh}
-header{text-align:center;padding:28px 18px;background:rgba(0,0,0,.35);border-bottom:3px solid #ffd700}
-.logo{width:95px;height:95px;border-radius:50%;border:4px solid #ffd700;background:white;color:#003b88;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:bold}
-h1{color:#ffd700;font-size:30px}
-nav{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px;background:rgba(0,14,40,.95)}
-nav button{padding:12px 6px;border:0;border-radius:14px;background:#ffd700;color:#00142f;font-weight:bold;font-size:13px}
-section{display:none;padding:18px}
-section.active{display:block}
-.card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:18px;margin-bottom:16px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
-h2,h3{color:#ffd700;margin-bottom:10px}
-p{line-height:1.45;font-size:15px}
-.tag{display:inline-block;background:rgba(255,215,0,.18);border:1px solid #ffd700;color:#ffd700;border-radius:999px;padding:6px 10px;font-size:12px;margin:4px;font-weight:bold}
-.profile{display:flex;gap:14px;align-items:center;margin-top:14px}
-.photo{min-width:76px;width:76px;height:76px;border-radius:50%;border:3px solid #ffd700;background:white;color:#003b88;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:22px}
-.small{font-size:13px;opacity:.88;margin-top:3px}
-.statbox{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stat{background:rgba(0,0,0,.22);border-radius:18px;padding:15px;text-align:center}
-.stat b{display:block;color:#ffd700;font-size:24px;margin-bottom:4px}
-input{width:100%;padding:13px;border-radius:14px;border:0;margin:12px 0;font-size:15px}
-.btn{display:inline-block;margin-top:10px;padding:12px 14px;background:#ffd700;color:#00142f;border-radius:14px;text-decoration:none;font-weight:bold}
-.status{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:bold;background:#1ee68c;color:#002b18}
-.list{padding-left:20px;margin-top:10px}
-.list li{margin-bottom:8px}
-footer{text-align:center;padding:20px;font-size:13px;opacity:.8}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agencia JM App v8</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #07111f;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #004cff, #00b7ff);
+      padding: 18px;
+      text-align: center;
+      border-bottom: 3px solid #ffd700;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .container {
+      padding: 18px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #101d33;
+      border: 1px solid #1f8cff;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 0 18px rgba(0, 140, 255, 0.2);
+    }
+
+    .card h2 {
+      color: #ffd700;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0066ff, #00c8ff);
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button.gold {
+      background: linear-gradient(135deg, #ffb300, #ffde59);
+      color: #111;
+    }
+
+    button.red {
+      background: linear-gradient(135deg, #ff3b3b, #b00020);
+    }
+
+    button.green {
+      background: linear-gradient(135deg, #00b86b, #00e69a);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      margin: 7px 0;
+      border-radius: 12px;
+      border: 1px solid #2d8cff;
+      background: #07111f;
+      color: white;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .small {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #ffd700;
+      color: #111;
+      font-weight: bold;
+      font-size: 12px;
+      margin: 3px 3px 8px 0;
+    }
+
+    .item {
+      background: #07111f;
+      border: 1px solid #264b82;
+      padding: 12px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    .item strong {
+      color: #ffd700;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .notice {
+      background: #132642;
+      border-left: 5px solid #ffd700;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">JM</div>
-<h1>Agencia Tenerife JMM</h1>
-<p>Gestión, formación y apoyo para emisoras Poppo Live</p>
+  <h1>🦅 Agencia JM</h1>
+  <p>Panel privado para emisoras, administración y creador</p>
 </header>
 
-<nav>
-<button onclick="mostrar('inicio')">Inicio</button>
-<button onclick="mostrar('emisoras')">Emisoras</button>
-<button onclick="mostrar('academia')">Academia</button>
-<button onclick="mostrar('pagos')">Pagos</button>
-</nav>
+<div class="container">
 
-<section id="inicio" class="active">
-<div class="card">
-<h2>Panel principal</h2>
-<p>Bienvenida a la aplicación oficial de Agencia Tenerife JMM. Aquí tendrás información de administración, emisoras, academia, pagos y avisos importantes.</p>
-<span class="tag">Poppo Live</span><span class="tag">Academia</span><span class="tag">Gestión</span>
-</div>
+  <section id="publicPage" class="card">
+    <h2>Bienvenido a Agencia JM</h2>
+    <p>Aplicación privada de gestión para emisoras de Poppo Live.</p>
+    <br>
+    <div class="grid">
+      <button onclick="showPage('loginPage')">Iniciar sesión</button>
+      <button class="gold" onclick="showPage('registerPage')">Registrarse</button>
+    </div>
+    <p class="small">Para editar o entrar al panel debes tener cuenta registrada.</p>
+  </section>
 
-<div class="card">
-<h3>Resumen rápido</h3>
-<div class="statbox">
-<div class="stat"><b>3</b>Administración</div>
-<div class="stat"><b>V2</b>Versión web</div>
-<div class="stat"><b>24h</b>Apoyo</div>
-<div class="stat"><b>100%</b>Formación</div>
-</div>
-</div>
+  <section id="loginPage" class="card hidden">
+    <h2>Iniciar sesión</h2>
+    <input id="loginEmail" type="email" placeholder="Correo" />
+    <input id="loginPassword" type="password" placeholder="Contraseña" />
+    <button onclick="login()">Entrar</button>
+    <button class="red" onclick="showPage('publicPage')">Volver</button>
+  </section>
 
-<div class="card">
-<h3>Administración principal</h3>
-<div class="profile"><div class="photo">J</div><div><strong>Jesús Melián</strong><p>Agente principal</p><p class="small">España · Tenerife</p></div></div>
-<div class="profile"><div class="photo">R</div><div><strong>Ruth María</strong><p>Administración</p><p class="small">Cuba · Cienfuegos</p></div></div>
-<div class="profile"><div class="photo">Y</div><div><strong>Yandira Vives</strong><p>Administración</p><p class="small">Cuba · La Habana</p></div></div>
-</div>
+  <section id="registerPage" class="card hidden">
+    <h2>Registro de emisora</h2>
+    <input id="regName" placeholder="Nombre artístico" />
+    <input id="regEmail" type="email" placeholder="Correo" />
+    <input id="regPassword" type="password" placeholder="Contraseña" />
+    <input id="regPoppoId" placeholder="ID de Poppo" />
+    <select id="regCountry">
+      <option value="">Selecciona país</option>
+      <option>Cuba</option>
+      <option>España</option>
+      <option>Venezuela</option>
+      <option>Colombia</option>
+      <option>Otro</option>
+    </select>
+    <button class="green" onclick="registerUser()">Crear cuenta</button>
+    <button class="red" onclick="showPage('publicPage')">Volver</button>
+    <p class="small">Las cuentas nuevas entran como emisora. Solo el creador puede dar permisos de admin.</p>
+  </section>
 
-<div class="card">
-<h3>Aviso de administración</h3>
-<p>Esta aplicación está en construcción. Los teléfonos, enlaces, fotos reales y datos completos se irán añadiendo poco a poco.</p>
-</div>
-</section>
+  <section id="appPage" class="hidden">
 
-<section id="emisoras">
-<div class="card">
-<h2>Emisoras</h2>
-<p>Busca y revisa las emisoras registradas en la agencia.</p>
-<input type="text" id="buscador" placeholder="Buscar emisora..." onkeyup="buscarEmisora()">
-</div>
+    <div class="card">
+      <h2>Panel principal</h2>
+      <p id="welcomeText"></p>
+      <span id="roleBadge" class="badge"></span>
+      <button class="red" onclick="logout()">Cerrar sesión</button>
+    </div>
 
-<div class="card emisora">
-<h3>Ruth María</h3>
-<p><b>País:</b> Cuba</p>
-<p><b>Rol:</b> Administración</p>
-<p><b>Nivel:</b> Pendiente</p>
-<span class="status">Activa</span>
-</div>
+    <nav>
+      <button onclick="openSection('perfil')">Mi perfil</button>
+      <button onclick="openSection('academia')">Academia</button>
+      <button onclick="openSection('tareas')">Tareas</button>
+      <button onclick="openSection('avisos')">Avisos</button>
+      <button onclick="openSection('pagos')">Pagos</button>
+      <button onclick="openSection('emisoras')">Emisoras</button>
+      <button class="gold" onclick="openCreatorPanel()">Zona creador</button>
+      <button onclick="openSection('contacto')">Contacto</button>
+    </nav>
 
-<div class="card emisora">
-<h3>Yandira Vives</h3>
-<p><b>País:</b> Cuba</p>
-<p><b>Rol:</b> Administración</p>
-<p><b>Nivel:</b> Pendiente</p>
-<span class="status">Activa</span>
-</div>
+    <section id="perfil" class="card appSection">
+      <h2>Mi perfil</h2>
+      <div id="profileInfo"></div>
+    </section>
 
-<div class="card emisora">
-<h3>Emisora nueva</h3>
-<p><b>ID:</b> Pendiente</p>
-<p><b>País:</b> Pendiente</p>
-<p><b>Nivel:</b> Pendiente</p>
-<span class="status">Por completar</span>
-</div>
-</section>
+    <section id="academia" class="card appSection hidden">
+      <h2>Academia</h2>
+      <div class="item">
+        <strong>Clase 1:</strong> Cómo empezar en Poppo Live.
+      </div>
+      <div class="item">
+        <strong>Clase 2:</strong> Normas básicas de transmisión.
+      </div>
+      <div class="item">
+        <strong>Clase 3:</strong> Cómo mejorar tus horas y tus puntos.
+      </div>
+      <div class="item">
+        <strong>Clase 4:</strong> Cómo hablar con usuarios y cuidar tu sala.
+      </div>
+    </section>
 
-<section id="academia">
-<div class="card">
-<h2>Academia JMM</h2>
-<p>Formación básica para nuevas emisoras. Aquí aprenderán cómo empezar, cómo cuidar la sala y cómo mejorar sus resultados.</p>
-</div>
+    <section id="tareas" class="card appSection hidden">
+      <h2>Tareas</h2>
+      <div id="taskList"></div>
+    </section>
 
-<div class="card">
-<h3>Curso 1: Primeros pasos</h3>
-<ul class="list">
-<li>Crear y revisar perfil.</li>
-<li>Preparar foto, nombre y presentación.</li>
-<li>Entrar a transmisión correctamente.</li>
-</ul>
-</div>
+    <section id="avisos" class="card appSection hidden">
+      <h2>Avisos</h2>
+      <div id="noticeList"></div>
+    </section>
 
-<div class="card">
-<h3>Curso 2: Cómo hacer buen live</h3>
-<ul class="list">
-<li>Saludar y recibir bien a los usuarios.</li>
-<li>Mantener conversación activa.</li>
-<li>Evitar discusiones y mala actitud en sala.</li>
-</ul>
-</div>
+    <section id="pagos" class="card appSection hidden">
+      <h2>Pagos</h2>
+      <div id="paymentList"></div>
+    </section>
 
-<div class="card">
-<h3>Curso 3: Reglas importantes</h3>
-<ul class="list">
-<li>Respetar normas de Poppo Live.</li>
-<li>No compartir datos peligrosos.</li>
-<li>Consultar siempre con administración ante dudas.</li>
-</ul>
-</div>
-</section>
+    <section id="emisoras" class="card appSection hidden">
+      <h2>Lista de emisoras</h2>
+      <div id="usersList"></div>
+    </section>
 
-<section id="pagos">
-<div class="card">
-<h2>Pagos y bonos</h2>
-<p>Información general sobre pagos, bonos y recompensas. Los datos exactos se actualizarán según la tabla oficial de la agencia.</p>
-</div>
+    <section id="creatorPanel" class="card appSection hidden">
+      <h2>Zona protegida del creador</h2>
+      <p>Solo puede entrar el creador/agente principal.</p>
 
-<div class="card">
-<h3>Información importante</h3>
-<ul class="list">
-<li>Los pagos dependen del rendimiento y normas de la plataforma.</li>
-<li>Los bonos se revisan con administración.</li>
-<li>Los datos de retiro deben estar correctos antes de solicitar pago.</li>
-</ul>
-</div>
+      <br>
+      <h3>Crear aviso</h3>
+      <textarea id="newNotice" placeholder="Escribe un aviso para las emisoras"></textarea>
+      <button onclick="addNotice()">Guardar aviso</button>
 
-<div class="card">
-<h3>Contacto de pagos</h3>
-<p>Próximamente se añadirá botón directo de WhatsApp para pagos y soporte.</p>
-<a class="btn" href="#">WhatsApp pagos</a>
-</div>
-</section>
+      <br><br>
+      <h3>Crear tarea</h3>
+      <textarea id="newTask" placeholder="Escribe una tarea"></textarea>
+      <button onclick="addTask()">Guardar tarea</button>
 
-<footer>
-© 2026 Agencia Tenerife JMM · Aplicación interna
-</footer>
+      <br><br>
+      <h3>Registrar pago</h3>
+      <input id="payUser" placeholder="Nombre de emisora" />
+      <input id="payAmount" placeholder="Cantidad / detalle del pago" />
+      <button onclick="addPayment()">Guardar pago</button>
 
-<script>
-function mostrar(id){
-document.querySelectorAll("section").forEach(sec=>sec.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-window.scrollTo(0,0);
-}
+      <br><br>
+      <h3>Gestionar roles</h3>
+      <input id="roleEmail" placeholder="Correo de la usuaria" />
+      <select id="roleType">
+        <option value="emisora">emisora</option>
+        <option value="admin">admin</option>
+        <option value="creador">creador</option>
+      </select>
+      <button class="gold" onclick="changeRole()">Cambiar rol</button>
+    </section>
 
-function buscarEmisora(){
-let texto=document.getElementById("buscador").value.toLowerCase();
-let emisoras=document.querySelectorAll(".emisora");
-emisoras.forEach(function(card){
-let contenido=card.innerText.toLowerCase();
-card.style.display=contenido.includes(texto)?"block":"none";
-});
-}
+    <section id="contacto" class="card appSection hidden">
+      <h2>Contacto administración</h2>
+      <div class="item">
+        <strong>Agente:</strong> Jesús Melián
+      </div>
+      <div class="item">
+        <strong>Administración:</strong> Ruth María
+      </div>
+      <div class="item">
+        <strong>Administración:</strong> Yandira Vives
+      </div>
+      <p class="small">Aquí luego ponemos WhatsApp, país, horarios y enlaces.</p>
+    </section>
+
+  </section>
+
+      </div><script>
+  const CREATOR_EMAIL = "jesus@agenciajm.com";
+
+  let users = JSON.parse(localStorage.getItem("jm_users")) || [];
+  let currentUser = JSON.parse(localStorage.getItem("jm_current_user")) || null;
+  let notices = JSON.parse(localStorage.getItem("jm_notices")) || [
+    "Bienvenida a Agencia JM. Revisa la academia y cumple tus horas.",
+    "Recuerda mantener buena actitud en sala y respetar las normas."
+  ];
+  let tasks = JSON.parse(localStorage.getItem("jm_tasks")) || [
+    "Completar perfil de emisora.",
+    "Revisar clase 1 de la academia.",
+    "Enviar captura de horas trabajadas."
+  ];
+  let payments = JSON.parse(localStorage.getItem("jm_payments")) || [];
+
+  function saveData() {
+    localStorage.setItem("jm_users", JSON.stringify(users));
+    localStorage.setItem("jm_current_user", JSON.stringify(currentUser));
+    localStorage.setItem("jm_notices", JSON.stringify(notices));
+    localStorage.setItem("jm_tasks", JSON.stringify(tasks));
+    localStorage.setItem("jm_payments", JSON.stringify(payments));
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll(".container > section").forEach(sec => {
+      sec.classList.add("hidden");
+    });
+    document.getElementById(pageId).classList.remove("hidden");
+  }
+
+  function registerUser() {
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim().toLowerCase();
+    const password = document.getElementById("regPassword").value.trim();
+    const poppoId = document.getElementById("regPoppoId").value.trim();
+    const country = document.getElementById("regCountry").value;
+
+    if (!name || !email || !password || !poppoId || !country) {
+      alert("Completa todos los datos para registrarte.");
+      return;
+    }
+
+    const exists = users.find(u => u.email === email);
+    if (exists) {
+      alert("Ese correo ya está registrado.");
+      return;
+    }
+
+    const role = email === CREATOR_EMAIL ? "creador" : "emisora";
+
+    const user = {
+      name,
+      email,
+      password,
+      poppoId,
+      country,
+      level: "Pendiente",
+      status: "Activa",
+      role
+    };
+
+    users.push(user);
+    currentUser = user;
+    saveData();
+    loadApp();
+  }
+
+  function login() {
+    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      alert("Correo o contraseña incorrectos.");
+      return;
+    }
+
+    currentUser = user;
+    saveData();
+    loadApp();
+  }
+
+  function logout() {
+    currentUser = null;
+    localStorage.removeItem("jm_current_user");
+    showPage("publicPage");
+  }
+
+  function loadApp() {
+    if (!currentUser) {
+      showPage("publicPage");
+      return;
+    }
+
+    showPage("appPage");
+
+    document.getElementById("welcomeText").innerText =
+      "Hola, " + currentUser.name + ". Bienvenida al panel privado.";
+
+    document.getElementById("roleBadge").innerText =
+      "Rol: " + currentUser.role;
+
+    renderProfile();
+    renderNotices();
+    renderTasks();
+    renderPayments();
+    renderUsers();
+    openSection("perfil");
+  }
+
+  function openSection(sectionId) {
+    document.querySelectorAll(".appSection").forEach(sec => {
+      sec.classList.add("hidden");
+    });
+
+    document.getElementById(sectionId).classList.remove("hidden");
+
+    if (sectionId === "emisoras") {
+      if (!["creador", "admin"].includes(currentUser.role)) {
+        alert("Solo administración puede ver la lista de emisoras.");
+        openSection("perfil");
+        return;
+      }
+    }
+  }
+
+  function openCreatorPanel() {
+    if (!currentUser || currentUser.role !== "creador") {
+      alert("Esta zona está protegida. Solo puede entrar el creador principal.");
+      openSection("perfil");
+      return;
+    }
+
+    openSection("creatorPanel");
+  }
+
+  function renderProfile() {
+    const html = `
+      <div class="item"><strong>Nombre:</strong> ${currentUser.name}</div>
+      <div class="item"><strong>Correo:</strong> ${currentUser.email}</div>
+      <div class="item"><strong>ID Poppo:</strong> ${currentUser.poppoId}</div>
+      <div class="item"><strong>País:</strong> ${currentUser.country}</div>
+      <div class="item"><strong>Nivel:</strong> ${currentUser.level}</div>
+      <div class="item"><strong>Estado:</strong> ${currentUser.status}</div>
+      <div class="item"><strong>Rol:</strong> ${currentUser.role}</div>
+    `;
+    document.getElementById("profileInfo").innerHTML = html;
+  }
+
+  function renderNotices() {
+    const box = document.getElementById("noticeList");
+    box.innerHTML = "";
+
+    notices.forEach((notice, index) => {
+      box.innerHTML += `
+        <div class="notice">
+          <strong>Aviso ${index + 1}:</strong><br>
+          ${notice}
+        </div>
+      `;
+    });
+  }
+
+  function renderTasks() {
+    const box = document.getElementById("taskList");
+    box.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+      box.innerHTML += `
+        <div class="item">
+          <strong>Tarea ${index + 1}:</strong><br>
+          ${task}
+        </div>
+      `;
+    });
+  }
+
+  function renderPayments() {
+    const box = document.getElementById("paymentList");
+    box.innerHTML = "";
+
+    const visiblePayments = currentUser.role === "creador" || currentUser.role === "admin"
+      ? payments
+      : payments.filter(p => p.user.toLowerCase() === currentUser.name.toLowerCase());
+
+    if (visiblePayments.length === 0) {
+      box.innerHTML = "<p>No hay pagos registrados todavía.</p>";
+      return;
+    }
+
+    visiblePayments.forEach((pay, index) => {
+      box.innerHTML += `
+        <div class="item">
+          <strong>Pago ${index + 1}</strong><br>
+          Emisora: ${pay.user}<br>
+          Detalle: ${pay.amount}<br>
+          Fecha: ${pay.date}
+        </div>
+      `;
+    });
+  }
+
+  function renderUsers() {
+    const box = document.getElementById("usersList");
+    box.innerHTML = "";
+
+    if (!currentUser || !["creador", "admin"].includes(currentUser.role)) {
+      box.innerHTML = "<p>Zona solo para administración.</p>";
+      return;
+    }
+
+    if (users.length === 0) {
+      box.innerHTML = "<p>No hay emisoras registradas.</p>";
+      return;
+    }
+
+    users.forEach(user => {
+      box.innerHTML += `
+        <div class="item">
+          <strong>${user.name}</strong><br>
+          Correo: ${user.email}<br>
+          ID Poppo: ${user.poppoId}<br>
+          País: ${user.country}<br>
+          Nivel: ${user.level}<br>
+          Estado: ${user.status}<br>
+          Rol: ${user.role}
+        </div>
+      `;
+    });
+  }
+
+  function addNotice() {
+    if (currentUser.role !== "creador") {
+      alert("Solo el creador puede crear avisos.");
+      return;
+    }
+
+    const text = document.getElementById("newNotice").value.trim();
+
+    if (!text) {
+      alert("Escribe un aviso primero.");
+      return;
+    }
+
+    notices.unshift(text);
+    document.getElementById("newNotice").value = "";
+    saveData();
+    renderNotices();
+    alert("Aviso guardado.");
+  }
+
+  function addTask() {
+    if (currentUser.role !== "creador") {
+      alert("Solo el creador puede crear tareas.");
+      return;
+    }
+
+    const text = document.getElementById("newTask").value.trim();
+
+    if (!text) {
+      alert("Escribe una tarea primero.");
+      return;
+    }
+
+    tasks.unshift(text);
+    document.getElementById("newTask").value = "";
+    saveData();
+    renderTasks();
+    alert("Tarea guardada.");
+  }
+
+  function addPayment() {
+    if (currentUser.role !== "creador") {
+      alert("Solo el creador puede registrar pagos.");
+      return;
+    }
+
+    const user = document.getElementById("payUser").value.trim();
+    const amount = document.getElementById("payAmount").value.trim();
+
+    if (!user || !amount) {
+      alert("Completa nombre de emisora y detalle del pago.");
+      return;
+    }
+
+    payments.unshift({
+      user,
+      amount,
+      date: new Date().toLocaleDateString("es-ES")
+    });
+
+    document.getElementById("payUser").value = "";
+    document.getElementById("payAmount").value = "";
+
+    saveData();
+    renderPayments();
+    alert("Pago guardado.");
+  }
+
+  function changeRole() {
+    if (currentUser.role !== "creador") {
+      alert("Solo el creador puede cambiar roles.");
+      return;
+    }
+
+    const email = document.getElementById("roleEmail").value.trim().toLowerCase();
+    const role = document.getElementById("roleType").value;
+
+    const user = users.find(u => u.email === email);
+
+    if (!user) {
+      alert("No encontré ninguna cuenta con ese correo.");
+      return;
+    }
+
+    user.role = role;
+
+    if (currentUser.email === user.email) {
+      currentUser.role = role;
+    }
+
+    saveData();
+    renderUsers();
+    alert("Rol actualizado.");
+  }
+
+  window.onload = function () {
+    if (!users.find(u => u.email === CREATOR_EMAIL)) {
+      users.push({
+        name: "Jesús Melián",
+        email: CREATOR_EMAIL,
+        password: "123456",
+        poppoId: "Creador",
+        country: "España",
+        level: "Agente",
+        status: "Activo",
+        role: "creador"
+      });
+      saveData();
+    }
+
+    if (currentUser) {
+      loadApp();
+    } else {
+      showPage("publicPage");
+    }
+  };
 </script>
 
 </body>
