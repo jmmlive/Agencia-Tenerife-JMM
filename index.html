@@ -385,7 +385,28 @@ window.abrirCreador = function() {
   document.getElementById("editDescripcion").value = perfilActual.descripcion || "";
 
   abrirSeccion("editarPerfil");
-};
-</script>
+};window.guardarPerfil = async function() {
+  const datosActualizados = {
+    telefono: document.getElementById("editTelefono").value.trim(),
+    whatsapp: document.getElementById("editWhatsapp").value.trim(),
+    instagram: document.getElementById("editInstagram").value.trim(),
+    facebook: document.getElementById("editFacebook").value.trim(),
+    tiktok: document.getElementById("editTikTok").value.trim(),
+    descripcion: document.getElementById("editDescripcion").value.trim()
+  };
+
+  await updateDoc(doc(db, "usuarios", usuarioActual.uid), datosActualizados);
+
+  perfilActual = {
+    ...perfilActual,
+    ...datosActualizados
+  };
+
+  window.perfilActual = perfilActual;
+
+  cargarPerfil();
+  abrirSeccion("perfil");
+  alert("Perfil actualizado correctamente.");
+    </script>
 </body>
 </html>
