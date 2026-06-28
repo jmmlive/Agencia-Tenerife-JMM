@@ -333,7 +333,7 @@ window.mostrar = function(id) {
 };
 
   window.abrirSeccion = function(id) {
-  document.querySelectorAll(".container > section").forEach(sec => {
+  document.querySelectorAll(".pantalla").forEach(sec => {
     sec.classList.add("hidden");
   });
 
@@ -348,7 +348,6 @@ window.mostrar = function(id) {
     behavior: "smooth"
   });
 };
-
 window.registrarEmisora = async function() {
   const nombre = document.getElementById("regNombre").value.trim();
   const email = document.getElementById("regEmail").value.trim().toLowerCase();
