@@ -386,18 +386,35 @@ cargarEmisoras();
 };
 
 window.cargarPerfil = function() {
+  const redSocial = (nombre, valor, icono) => {
+    if (!valor) return "";
+
+    let texto = valor;
+    if (valor.includes("instagram.com")) texto = "@" + valor.split("/").filter(Boolean).pop().split("?")[0];
+    if (valor.includes("tiktok.com")) texto = valor.split("/").filter(Boolean).pop().split("?")[0];
+    if (valor.includes("facebook.com")) texto = "Ver perfil";
+
+    return `
+      <div class="item">
+        <strong>${icono} ${nombre}:</strong> ${texto}
+        <br>
+        <button class="blue" onclick="window.open('${valor}', '_blank')">Abrir ${nombre}</button>
+      </div>
+    `;
+  };
+
   document.getElementById("datosPerfil").innerHTML = `
     <div class="item"><strong>Nombre:</strong> ${perfilActual.nombre || ""}</div>
     <div class="item"><strong>Correo:</strong> ${perfilActual.email || ""}</div>
     <div class="item"><strong>ID Poppo:</strong> ${perfilActual.poppoId || ""}</div>
     <div class="item"><strong>País:</strong> ${perfilActual.pais || ""}</div>
-    <div class="item"><strong>Nivel:</strong> ${perfilActual.nivel || ""}</div>
-    <div class="item"><strong>Estado:</strong> ${perfilActual.estado || ""}</div>
+    <div class="item"><strong>Nivel:</strong> ${perfilActual.nivel || "Pendiente"}</div>
+    <div class="item"><strong>Estado:</strong> ${perfilActual.estado || "Activa"}</div>
     <div class="item"><strong>Teléfono:</strong> ${perfilActual.telefono || ""}</div>
     <div class="item"><strong>WhatsApp:</strong> ${perfilActual.whatsapp || ""}</div>
-    <div class="item"><strong>Instagram:</strong> ${perfilActual.instagram || ""}</div>
-    <div class="item"><strong>Facebook:</strong> ${perfilActual.facebook || ""}</div>
-    <div class="item"><strong>TikTok:</strong> ${perfilActual.tiktok || ""}</div>
+    ${redSocial("Instagram", perfilActual.instagram, "📷")}
+    ${redSocial("Facebook", perfilActual.facebook, "👍")}
+    ${redSocial("TikTok", perfilActual.tiktok, "🎵")}
     <div class="item"><strong>Bio:</strong> ${perfilActual.descripcion || ""}</div>
   `;
 };
