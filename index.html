@@ -132,7 +132,38 @@ button.gold{background:linear-gradient(135deg,#ffcc00,#ffe680);color:#111}
   <input id="buscarEmisora" placeholder="Buscar por nombre, correo o ID Poppo" oninput="cargarEmisoras()">
   <div id="listaEmisoras"></div>
   </section>
+<section id="editarEmisoraAdmin" class="card seccion hidden">
+  <h2>✏️ Editar Emisora</h2>
 
+  <input id="adminUid" type="hidden">
+
+  <input id="adminNombre" placeholder="Nombre">
+  <input id="adminPoppoId" placeholder="ID Poppo">
+  <input id="adminPais" placeholder="País">
+
+  <select id="adminNivel">
+    <option value="Pendiente">Pendiente</option>
+    <option value="Bronce">Bronce</option>
+    <option value="Plata">Plata</option>
+    <option value="Oro">Oro</option>
+    <option value="Diamante">Diamante</option>
+  </select>
+
+  <select id="adminRol">
+    <option value="emisora">Emisora</option>
+    <option value="administradora">Administradora</option>
+    <option value="creador">Creador</option>
+  </select>
+
+  <select id="adminEstado">
+    <option value="Activa">Activa</option>
+    <option value="Pausada">Pausada</option>
+    <option value="Baja">Baja</option>
+  </select>
+
+  <button class="green" onclick="guardarEmisoraAdmin()">💾 Guardar emisora</button>
+  <button class="red" onclick="abrirSeccion('emisoras')">Cancelar</button>
+</section>
   <section id="contacto" class="card seccion hidden">
     <h2>☎️ Contacto</h2>
     <p>Administración Agencia JM</p>
