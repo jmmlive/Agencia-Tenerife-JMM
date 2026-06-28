@@ -141,7 +141,7 @@ button.gold{background:linear-gradient(135deg,#ffcc00,#ffe680);color:#111}
   <section id="creador" class="card seccion hidden">
     <h2>👑 Panel del Creador</h2>
 
-    <button class="gold">Administrar Emisoras</button>
+    <button class="gold" onclick="administrarEmisoras()">Administrar Emisoras</button>
     <button class="gold">Editar País</button>
     <button class="gold">Editar ID Poppo</button>
     <button class="gold">Editar Rol</button>
@@ -399,6 +399,10 @@ window.abrirCreador = function() {
   }
 
   abrirSeccion("creador");
+};
+  window.administrarEmisoras = function() {
+  abrirSeccion("emisoras");
+  cargarEmisoras();
 };
   window.abrirEditorPerfil = function() {
   document.getElementById("editTelefono").value = perfilActual.telefono || "";
