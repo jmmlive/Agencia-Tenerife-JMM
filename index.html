@@ -349,6 +349,7 @@ window.cargarPanel = function() {
   }
 
   cargarPerfil();
+cargarEmisoras();
 };
 
 window.cargarPerfil = function() {
@@ -367,7 +368,32 @@ window.cargarPerfil = function() {
     <div class="item"><strong>Bio:</strong> ${perfilActual.descripcion || ""}</div>
   `;
 };
+window.cargarEmisoras = function() {
+  const lista = document.getElementById("listaEmisoras");
 
+  lista.innerHTML = `
+    <div class="item">
+      <strong>Ruth María</strong><br>
+      ID Poppo: Pendiente<br>
+      País: Cuba<br>
+      Rol: Administradora
+    </div>
+
+    <div class="item">
+      <strong>Yandira Vives</strong><br>
+      ID Poppo: Pendiente<br>
+      País: Cuba<br>
+      Rol: Administradora
+    </div>
+
+    <div class="item">
+      <strong>Jesús</strong><br>
+      ID Poppo: Pendiente<br>
+      País: España<br>
+      Rol: Creador / Agente
+    </div>
+  `;
+};
 window.abrirCreador = function() {
   if (!perfilActual || perfilActual.rol !== "creador") {
     alert("Zona protegida. Solo puede entrar el creador.");
