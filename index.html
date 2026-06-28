@@ -369,31 +369,27 @@ window.cargarPerfil = function() {
     <div class="item"><strong>Bio:</strong> ${perfilActual.descripcion || ""}</div>
   `;
 };
-window.cargarEmisoras = function() {
+window.cargarEmisoras = async function() {
   const lista = document.getElementById("listaEmisoras");
+  lista.innerHTML = "";
 
-  lista.innerHTML = `
-    <div class="item">
-      <strong>Ruth María</strong><br>
-      ID Poppo: Pendiente<br>
-      País: Cuba<br>
-      Rol: Administradora
-    </div>
+  const consulta = await getDocs(collection(db, "usuarios"));
 
-    <div class="item">
-      <strong>Yandira Vives</strong><br>
-      ID Poppo: Pendiente<br>
-      País: Cuba<br>
-      Rol: Administradora
-    </div>
+  consulta.forEach((docu) => {
+    const e = docu.data();
 
-    <div class="item">
-      <strong>Jesús</strong><br>
-      ID Poppo: Pendiente<br>
-      País: España<br>
-      Rol: Creador / Agente
-    </div>
-  `;
+    lista.innerHTML += `
+      <div class="item">
+        <strong>${e.nombre || ""}</strong><br>
+        ID Poppo: ${e.poppoId || ""}<br>
+        País: ${e.pais || ""}<br>
+        Nivel: ${e.nivel || ""}<br>
+        Rol: ${e.rol || ""}<br>
+        Estado: ${e.estado || ""}
+      </div>
+    `;
+  });
+};
 };
 window.abrirCreador = function() {
   if (!perfilActual || perfilActual.rol !== "creador") {
