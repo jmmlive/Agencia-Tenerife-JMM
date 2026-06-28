@@ -182,13 +182,13 @@ button.gold{background:linear-gradient(135deg,#ffcc00,#ffe680);color:#111}
   <button class="red" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <section id="perfil" class="card seccion">
+  <section id="perfil" class="card pantalla hidden">
     <h2>Mi perfil</h2>
     <div id="datosPerfil"></div>
     <button class="gold" onclick="abrirEditorPerfil()">✏️ Editar mi perfil</button>
   </section>
 
-  <section id="editarPerfil" class="card seccion hidden">
+  <section id="editarPerfil" class="card pantalla hidden">
     <h2>✏️ Editar mi perfil</h2>
     <input id="editTelefono" placeholder="Teléfono">
     <input id="editWhatsapp" placeholder="WhatsApp">
@@ -198,28 +198,27 @@ button.gold{background:linear-gradient(135deg,#ffcc00,#ffe680);color:#111}
     <textarea id="editDescripcion" placeholder="Descripción personal / bio"></textarea>
     <button class="green" onclick="guardarPerfil()">💾 Guardar cambios</button>
     <button class="red" onclick="abrirSeccion('perfil')">Cancelar</button>
-  </section>  <section id="academia" class="card seccion hidden">
-    <h2>🎓 Academia</h2>
-    <p>Próximamente cursos, vídeos y formación.</p>
-  </section>
+  <section id="academia" class="card pantalla hidden">
+  <h2>🎓 Academia</h2>
+  <p>Próximamente cursos, vídeos y formación.</p>
+</section>
 
-  <section id="avisos" class="card seccion hidden">
-    <h2>📢 Avisos</h2>
-    <div id="listaAvisos"></div>
-  </section>
+<section id="avisos" class="card pantalla hidden">
+  <h2>📢 Avisos</h2>
+  <div id="listaAvisos"></div>
+</section>
 
-  <section id="tareas" class="card seccion hidden">
-    <h2>📋 Tareas</h2>
-    <div id="listaTareas"></div>
-  </section>
+<section id="tareas" class="card pantalla hidden">
+  <h2>📋 Tareas</h2>
+  <div id="listaTareas"></div>
+</section>
 
-  <section id="pagos" class="card seccion hidden">
-    <h2>💰 Pagos</h2>
-    <div id="listaPagos"></div>
-  </section>
+<section id="pagos" class="card pantalla hidden">
+  <h2>💰 Pagos</h2>
+  <div id="listaPagos"></div>
+</section>
 
-  <section id="emisoras" class="card seccion hidden">
-  <h2>👩‍💼 Emisoras</h2>
+<section id="emisoras" class="card pantalla hidden">
   <input id="buscarEmisora" placeholder="Buscar por nombre, correo o ID Poppo" oninput="cargarEmisoras()">
   <div id="listaEmisoras"></div>
   </section>
